@@ -1,0 +1,104 @@
+<section class="upload-container">
+    <div class="upload-card">
+        <div class="upload-box" id="drop-zone">
+            <div class="upload-left">
+                <div class="upload-icon-circle">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <div class="upload-text">
+                    <p class="primary-text" data-i18n="crop.dragDrop">Drag & drop your crop image here</p>
+                    <p class="divider">or</p>
+                    <div class="upload-actions">
+                        <label for="cropImageInput" class="browse-btn">
+                            <i class="fas fa-folder-open"></i> <span data-i18n="crop.browseFile">Browse File</span>
+                        </label>
+                        <button id="openCameraBtn" class="camera-btn">
+                            <i class="fas fa-camera"></i> <span data-i18n="crop.openCamera">Open Camera</span>
+                        </button>
+                    </div>
+                    <p class="permission-note" style="font-size: 11px; color: #718096; margin-top: 8px;" data-i18n="crop.permissionNote">
+                        * If camera fails, allow access in the browser address bar.
+                    </p>
+                    <input type="file" id="cropImageInput" accept="image/*" hidden>
+                </div>
+            </div>
+            <div class="upload-right">
+                <div class="preview-wrapper" id="preview-container">
+                    <div class="placeholder-preview">
+                        <i class="far fa-image"></i>
+                        <span>Preview Area</span>
+                    </div>
+                    <img src="" id="cropPreviewImg" alt="Crop Preview" style="display: none;">
+                    <video id="camera-feed" autoplay playsinline muted style="display: none; width: 100%; border-radius: 12px;"></video>
+                    <canvas id="camera-canvas" style="display: none;"></canvas>
+                </div>
+                <p id="cropPreviewName" class="filename"></p>
+                <button id="capturePhotoBtn" class="capture-btn" style="display: none;">
+                    <i class="fas fa-circle"></i> <span data-i18n="crop.capturePhoto">Capture Photo</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="analyze-action" style="display: flex; gap: 15px; justify-content: center;">
+        <button id="analyzeCropBtn" class="analyze-btn" disabled data-i18n="crop.analyzeCrop">Analyze Crop</button>
+        <button id="newAnalysisBtn" class="refresh-btn"><i class="fas fa-redo"></i> <span data-i18n="crop.newAnalysis">New Analysis</span></button>
+    </div>
+</section>
+
+<section class="result-container" id="cropResultBox" style="display: none;">
+    <div class="result-card">
+        <div class="result-layout">
+            <div class="result-left">
+                <img src="" id="result-image" alt="Analyzed Crop">
+            </div>
+            <div class="result-center">
+                <div class="disease-header">
+                    <h3 id="disease-name" data-i18n="common.analyzing">Analyzing...</h3>
+                    <span class="status-badge" id="status-badge" data-i18n="common.loading">Processing</span>
+                </div>
+                <div class="confidence-box">
+                    <div class="confidence-label">
+                        <span data-i18n="crop.confidenceScore">Confidence Score</span>
+                        <strong id="confidence-value">0%</strong>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="confidence-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="result-right">
+                <div class="about-disease">
+                    <h4 data-i18n="crop.aboutDisease">About the Detection</h4>
+                    <p id="disease-desc">Analysis results will appear here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="treatment-grid">
+        <div class="treatment-block">
+            <div class="block-title">
+                <i class="fas fa-pills"></i>
+                <h4 data-i18n="crop.suggestedTreatment">Suggested Treatment</h4>
+            </div>
+            <ul class="treatment-list" id="treatment-list">
+                <!-- Dynamic Content -->
+            </ul>
+        </div>
+        <div class="preventive-block">
+            <div class="block-title">
+                <i class="fas fa-shield-alt"></i>
+                <h4 data-i18n="crop.preventiveMeasures">Preventive Measures</h4>
+            </div>
+            <div class="measures-box" id="measures-box">
+                <p>Standard agricultural practices and monitoring recommended.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="result-actions">
+        <button class="save-btn" id="saveResultBtn"><i class="far fa-save"></i> <span data-i18n="common.save">Save Result</span></button>
+        <button class="ai-btn"><i class="fas fa-robot"></i> <span data-i18n="chatbot.title">Ask AI Assistant</span></button>
+    </div>
+</section>

@@ -1,0 +1,268 @@
+/**
+ * AgroVerse Design System Tokens (Phase 3)
+ * Crafted for a high-end agricultural enterprise SaaS interface.
+ * Natural forest-green and emerald accents, warm organic neutrals, mineral grey, and deep forest dark theme.
+ */
+
+:root {
+  /* ── Core Brand Palette (Forest & Emerald) ── */
+  --brand-forest-950: #05140c;
+  --brand-forest-900: #0a2417;
+  --brand-forest-850: #0f3321;
+  --brand-forest-800: #143f2a;
+  --brand-forest-700: #1b5338;
+  --brand-forest-600: #236947;
+  
+  --brand-emerald-600: #15803d;
+  --brand-emerald-500: #16a34a;
+  --brand-emerald-400: #22c55e;
+  --brand-emerald-300: #4ade80;
+  --brand-emerald-200: #86efac;
+  --brand-emerald-100: #bbf7d0;
+  --brand-emerald-50:  #f0fdf4;
+
+  /* Accent highlights */
+  --brand-amber-500: #f59e0b;
+  --brand-amber-600: #d97706;
+  --brand-amber-50:  #fffbeb;
+
+  /* ── Typography Scale & Stack ── */
+  --font-family-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', Menlo, monospace;
+
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.84375rem;  /* 13.5px */
+  --text-base: 0.9375rem; /* 15px */
+  --text-md: 1.0625rem;   /* 17px */
+  --text-lg: 1.1875rem;   /* 19px */
+  --text-xl: 1.375rem;    /* 22px */
+  --text-2xl: 1.625rem;   /* 26px */
+  --text-3xl: 2rem;       /* 32px */
+  --text-4xl: 2.5rem;     /* 40px */
+
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+
+  /* ── Spacing Scale ── */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+
+  /* ── Radii ── */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-2xl: 28px;
+  --radius-full: 9999px;
+
+  /* ── Layout Geometry ── */
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 76px;
+  --right-panel-width: 320px;
+  --header-height: 74px;
+  --content-max-width: 1480px;
+
+  /* ── Light Mode Semantic Tokens (Default) ── */
+  --bg-app: #f5f8f5;
+  --bg-primary: var(--bg-app);
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-surface-soft: #f0f5f1;
+  --bg-surface-pale: #e7f0e9;
+  --bg-surface-active: #dfede2;
+
+  --bg-sidebar: #092116;
+  --bg-sidebar-gradient: linear-gradient(180deg, #092116 0%, #061910 100%);
+  --bg-sidebar-card: rgba(255, 255, 255, 0.08);
+  --bg-sidebar-hover: rgba(255, 255, 255, 0.06);
+  --text-sidebar: #e5f3eb;
+  --text-sidebar-muted: #95b8a5;
+  --text-sidebar-active: #ffffff;
+  --border-sidebar: rgba(255, 255, 255, 0.07);
+
+  /* Typography Colors */
+  --text-primary: #121c16;
+  --text-secondary: #3b4e43;
+  --text-muted: #667c70;
+  --text-subtle: #94a79c;
+  --text-inverse: #ffffff;
+  --text-brand: #15803d;
+
+  /* Borders & Dividers */
+  --border-subtle: #e5ede7;
+  --border-default: #d6e2d9;
+  --border-strong: #b8ccbe;
+  --border-accent: rgba(22, 163, 74, 0.28);
+
+  /* Feedback Colors */
+  --color-success: #15803d;
+  --color-success-bg: #f0fdf4;
+  --color-success-border: #bbf7d0;
+
+  --color-warning: #b45309;
+  --color-warning-bg: #fffbeb;
+  --color-warning-border: #fde68a;
+
+  --color-danger: #b91c1c;
+  --color-danger-bg: #fef2f2;
+  --color-danger-border: #fecaca;
+
+  --color-info: #0369a1;
+  --color-info-bg: #f0f9ff;
+  --color-info-border: #bae6fd;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(16, 28, 22, 0.04);
+  --shadow-sm: 0 1px 3px 0 rgba(16, 28, 22, 0.06), 0 1px 2px -1px rgba(16, 28, 22, 0.04);
+  --shadow-md: 0 4px 10px -1px rgba(16, 28, 22, 0.06), 0 2px 4px -2px rgba(16, 28, 22, 0.04);
+  --shadow-lg: 0 12px 24px -4px rgba(16, 28, 22, 0.08), 0 4px 8px -4px rgba(16, 28, 22, 0.04);
+  --shadow-xl: 0 22px 36px -6px rgba(16, 28, 22, 0.12), 0 8px 16px -6px rgba(16, 28, 22, 0.06);
+  --shadow-float: 0 20px 45px -10px rgba(9, 33, 22, 0.16);
+  --shadow-glow-emerald: 0 0 20px rgba(34, 197, 94, 0.22);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --glass-blur: blur(14px);
+
+  /* Transitions */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 240ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Legacy Backward-Compatibility Aliases ── */
+  --primary: var(--brand-emerald-500);
+  --primary-hover: var(--brand-emerald-400);
+  --primary-green: var(--brand-emerald-500);
+  --primary-green-dark: var(--brand-emerald-600);
+  --primary-color: var(--brand-emerald-500);
+  --bg: var(--bg-app);
+  --bg-main: var(--bg-app);
+  --page-bg: var(--bg-app);
+  --card-bg: var(--bg-surface);
+  --bg-card: var(--bg-surface);
+  --input-bg: var(--bg-surface);
+  --color-surface: var(--bg-surface);
+  --color-surface-soft: var(--bg-surface-soft);
+  --color-border: var(--border-subtle);
+  --color-text: var(--text-primary);
+  --color-bg: var(--bg-app);
+  --color-muted: var(--text-muted);
+  --border: var(--border-subtle);
+  --border-color: var(--border-subtle);
+  --border-light: var(--border-subtle);
+  --text-main: var(--text-primary);
+  --text-dark: var(--text-primary);
+  --text-light: var(--text-muted);
+  --text-gray: var(--text-muted);
+  --white: #ffffff;
+  --danger-color: #dc2626;
+  --warning-color: #f59e0b;
+  --secondary-color: #2563eb;
+  --color-green: var(--brand-emerald-500);
+  --color-green-dark: var(--brand-emerald-600);
+  --color-green-soft: rgba(34, 197, 94, 0.12);
+  --border-radius: var(--radius-md);
+  --shadow: var(--shadow-sm);
+  --shadow-card: var(--shadow-sm);
+  --hover-shadow: var(--shadow-md);
+  --light-green: #ecfdf5;
+  --dark-green: #0a2417;
+  --sidebar-green: #092116;
+}
+
+/* ── Dark Mode Token Overrides ── */
+[data-theme="dark"],
+body.dark-theme {
+  --bg-app: #08120d;
+  --bg-primary: var(--bg-app);
+  --bg-surface: #0e1e16;
+  --bg-surface-elevated: #13271d;
+  --bg-surface-soft: #172f23;
+  --bg-surface-pale: #1c382a;
+  --bg-surface-active: #224333;
+
+  --bg-sidebar: #060e0a;
+  --bg-sidebar-gradient: linear-gradient(180deg, #060e0a 0%, #040906 100%);
+  --bg-sidebar-card: rgba(255, 255, 255, 0.05);
+  --bg-sidebar-hover: rgba(255, 255, 255, 0.04);
+  --text-sidebar: #e5f3eb;
+  --text-sidebar-muted: #799d8b;
+  --text-sidebar-active: #ffffff;
+  --border-sidebar: rgba(255, 255, 255, 0.05);
+
+  --text-primary: #edf5f0;
+  --text-secondary: #c2d8cc;
+  --text-muted: #8ca395;
+  --text-subtle: #62796c;
+  --text-inverse: #08120d;
+  --text-brand: #4ade80;
+
+  --border-subtle: #182f23;
+  --border-default: #203d2e;
+  --border-strong: #2c533f;
+  --border-accent: rgba(74, 222, 128, 0.28);
+
+  --color-success: #4ade80;
+  --color-success-bg: rgba(34, 197, 94, 0.12);
+  --color-success-border: rgba(34, 197, 94, 0.3);
+
+  --color-warning: #fbbf24;
+  --color-warning-bg: rgba(245, 158, 11, 0.12);
+  --color-warning-border: rgba(245, 158, 11, 0.3);
+
+  --color-danger: #f87171;
+  --color-danger-bg: rgba(239, 68, 68, 0.12);
+  --color-danger-border: rgba(239, 68, 68, 0.3);
+
+  --color-info: #38bdf8;
+  --color-info-bg: rgba(56, 189, 248, 0.12);
+  --color-info-border: rgba(56, 189, 248, 0.3);
+
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.6), 0 1px 2px -1px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 10px -1px rgba(0, 0, 0, 0.65), 0 2px 4px -2px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 24px -4px rgba(0, 0, 0, 0.75), 0 4px 8px -4px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 22px 36px -6px rgba(0, 0, 0, 0.85);
+  --shadow-float: 0 20px 45px -10px rgba(0, 0, 0, 0.9);
+  --shadow-glow-emerald: 0 0 24px rgba(74, 222, 128, 0.25);
+
+  --glass-bg: rgba(14, 30, 22, 0.88);
+  --glass-border: rgba(255, 255, 255, 0.08);
+
+  /* Legacy re-mappings for dark mode */
+  --bg: var(--bg-app);
+  --bg-main: var(--bg-app);
+  --page-bg: var(--bg-app);
+  --card-bg: var(--bg-surface);
+  --bg-card: var(--bg-surface);
+  --input-bg: var(--bg-surface-elevated);
+  --color-surface: var(--bg-surface);
+  --color-surface-soft: var(--bg-surface-soft);
+  --color-border: var(--border-subtle);
+  --color-text: var(--text-primary);
+  --color-bg: var(--bg-app);
+  --color-muted: var(--text-muted);
+  --border: var(--border-subtle);
+  --border-color: var(--border-subtle);
+  --border-light: var(--border-subtle);
+  --text-main: var(--text-primary);
+  --text-dark: var(--text-primary);
+  --text-light: var(--text-muted);
+  --text-gray: var(--text-muted);
+  --white: var(--bg-surface);
+  --light-green: rgba(34, 197, 94, 0.15);
+  --color-green-soft: rgba(34, 197, 94, 0.2);
+}

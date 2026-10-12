@@ -1,0 +1,52 @@
+{
+    "wheat_healthy": {
+        "en": { "description": "Wheat crop appears healthy.", "treatment": ["Maintain regular irrigation.", "Monitor for rust pests."] },
+        "hi": { "description": "गेहूं की फसल स्वस्थ दिख रही है।", "treatment": ["नियमित सिंचाई बनाए रखें।", "रस्ट कीटों की निगरानी करें।"] },
+        "mr": { "description": "गव्हाचे पीक निरोगी दिसत आहे.", "treatment": ["नियमित सिंचन चालू ठेवा.", "तांबेरा कीटकांवर लक्ष ठेवा."] }
+    },
+    "wheat_rust": {
+        "en": { "description": "Wheat Rust detected. Orange/brown pustules on leaves.", "treatment": ["Apply Mancozeb fungicide.", "Avoid overhead watering.", "Select resistant varieties."] },
+        "hi": { "description": "गेहूं का रस्ट (तांबेरा) पाया गया। पत्तियों पर नारंगी/भूरे रंग के धब्बे।", "treatment": ["मैन्कोज़ेब कवकनाशी का प्रयोग करें।", "ऊपर से पानी डालने से बचें।", "प्रतिरोधी किस्मों का चयन करें।"] },
+        "mr": { "description": "गव्हावरील तांबेरा रोग आढळला. पानांवर नारंगी/तपकिरी ठिपके.", "treatment": ["मॅन्कोझेब बुरशीनाशक वापरा.", "वरतून पाणी देणे टाळा.", "रोगप्रतिकारक वाण निवडा."] }
+    },
+    "bajra_leaf_blight": {
+        "en": { "description": "Bajra Leaf Blight detected. Necrotic lesions on foliage.", "treatment": ["Spray Copper Oxychloride.", "Maintain field hygiene.", "Use certified seeds."] },
+        "hi": { "description": "बाजरा लीफ ब्लाइट पाया गया। पत्तियों पर सूखे धब्बे।", "treatment": ["कॉपर ऑक्सीक्लोराइड का छिड़काव करें।", "खेत की स्वच्छता बनाए रखें।", "प्रमाणित बीजों का उपयोग करें।"] },
+        "mr": { "description": "बाजरीवरील कडा करपा रोग आढळला. पानांवर करपलेले डाग.", "treatment": ["कॉपर ऑक्सीक्लोराईडची फवारणी करा.", "शेताची स्वच्छता राखा.", "प्रमाणित बियाणे वापरा."] }
+    },
+    "bajra_healthy": {
+        "en": { "description": "Bajra crop is in good health.", "treatment": ["Regular soil monitoring.", "Balanced NPK application."] },
+        "hi": { "description": "बाजरा की फसल अच्छी सेहत में है।", "treatment": ["नियमित मिट्टी की निगरानी।", "संतुलित NPK का प्रयोग।"] },
+        "mr": { "description": "बाजरीचे पीक उत्तम स्थितीत आहे.", "treatment": ["नियमित मृदा परीक्षण करा.", "संतुलित खतांचा (NPK) वापर करा."] }
+    },
+    "corn_leaf_blight": {
+        "en": { "description": "Corn Leaf Blight detected. Elliptical lesions on leaves.", "treatment": ["Crop rotation.", "Foliar fungicides if severe.", "Clear debris."] },
+        "hi": { "description": "मक्का लीफ ब्लाइट पाया गया। पत्तियों पर अंडाकार धब्बे।", "treatment": ["फसल चक्र अपनाएं।", "गंभीर होने पर कवकनाशी का प्रयोग करें।", "पुराना कचरा साफ करें।"] },
+        "mr": { "description": "मक्यावरील करपा रोग आढळला. पानांवर लंबवर्तुळाकार डाग.", "treatment": ["पीक फेरपालट करा.", "तीव्रता जास्त असल्यास बुरशीनाशक वापरा.", "शेत कचरा मुक्त ठेवा."] }
+    },
+    "cotton_bacterial_spot": {
+        "en": { "description": "Bacterial Spot on Cotton. Angular leaf spots.", "treatment": ["Apply Copper sprays.", "Control humidity.", "Remove infected parts."] },
+        "hi": { "description": "कपास पर बैक्टीरियल स्पॉट। कोणीय पत्ती के धब्बे।", "treatment": ["कॉपर स्प्रे का प्रयोग करें।", "नमी को नियंत्रित करें।", "संक्रमित भागों को हटा दें।"] },
+        "mr": { "description": "कापसावरील जिवाणूजन्य ठिपके. पानांवर कोनीय डाग.", "treatment": ["कॉपरची फवारणी करा.", "आर्द्रता नियंत्रित ठेवा.", "बाधित भाग काढून टाका."] }
+    },
+    "mango_powdery_mildew": {
+        "en": { "description": "Powdery Mildew on Mango. White powdery growth on leaves/flowers.", "treatment": ["Sulfur based sprays.", "Pruning for better air.", "Manage canopy density."] },
+        "hi": { "description": "आम पर पाउडरी मिल्ड्यू। पत्तियों/फूलों पर सफेद पाउडर जैसी वृद्धि।", "treatment": ["सल्फर आधारित स्प्रे।", "बेहतर हवा के लिए छंटाई।", "कैनोपी घनत्व का प्रबंधन करें।"] },
+        "mr": { "description": "आंब्यावरील भुरी रोग. पाने/फुलांवर पांढरी बुरशी.", "treatment": ["गंधकयुक्त फवारणी करा.", "छाटणी करून हवा खेळती ठेवा.", "झाडांची गर्दी कमी करा."] }
+    },
+    "soybean_rust": {
+        "en": { "description": "Soybean Rust detected. Small reddish-brown spots.", "treatment": ["Early detection is key.", "Fungicide application.", "Plant early maturing varieties."] },
+        "hi": { "description": "सोयाबीन रस्ट पाया गया। छोटे लाल-भूरे रंग के धब्बे।", "treatment": ["जल्द पहचान महत्वपूर्ण है।", "कवकनाशी का प्रयोग।", "जल्द पकने वाली किस्मों को लगाएं।"] },
+        "mr": { "description": "सोयाबीनवरील तांबेरा रोग आढळला. लहान तांबूस-तपकिरी ठिपके.", "treatment": ["लवकर ओळख होणे महत्त्वाचे आहे.", "बुरशीनाशकांचा वापर करा.", "लवकर तयार होणारे वाण लावा."] }
+    },
+    "rice_bacterial_spot": {
+        "en": { "description": "Bacterial leaf streak or spot on Rice.", "treatment": ["Avoid high nitrogen.", "Balanced irrigation.", "Antibiotic sprays if required."] },
+        "hi": { "description": "चावल पर बैक्टीरियल लीफ स्ट्रीक या स्पॉट।", "treatment": ["अधिक नाइट्रोजन से बचें।", "संतुलित सिंचाई।", "यदि आवश्यक हो तो एंटीबायोटिक स्प्रे।"] },
+        "mr": { "description": "भातावरील जिवाणूजन्य कडा करपा.", "treatment": ["नत्र खतांचा अतिवापर टाळा.", "संतुलित सिंचन करा.", "आवश्यक असल्यास प्रतिजैविकांची फवारणी करा."] }
+    },
+    "unknown": {
+        "en": { "description": "Detection could not be verified with high confidence.", "treatment": ["Re-take photo in better light.", "Consult local agriculture expert."] },
+        "hi": { "description": "उच्च सटीकता के साथ पहचान सत्यापित नहीं की जा सकी।", "treatment": ["बेहतर रोशनी में फिर से फोटो लें।", "स्थानीय कृषि विशेषज्ञ से सलाह लें।"] },
+        "mr": { "description": "उच्च खात्रीने ओळख पटवता आली नाही.", "treatment": ["चांगल्या प्रकाशात पुन्हा फोटो काढा.", "स्थानिक कृषी तज्ज्ञांचा सल्ला घ्या."] }
+    }
+}

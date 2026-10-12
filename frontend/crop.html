@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroVerse - Crop Detection</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="crop-detection.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <div class="logo-wrapper">
+                    <img src="assets/favicon.png" alt="AgroVerse Logo">
+                    <h1>AgroVerse</h1>
+                </div>
+                <p>Smart Farming, Better Future</p>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-item" data-route="index.html">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </div>
+                <div class="nav-item" data-route="dashboard.html">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item" data-route="crop.html">
+                    <i class="fas fa-leaf"></i>
+                    <span>Crop Detection</span>
+                </div>
+                <div class="nav-item" data-route="schemes.html">
+                    <i class="fas fa-file-invoice"></i>
+                    <span>Govt Schemes</span>
+                </div>
+                <div class="nav-item" data-route="community.html">
+                    <i class="fas fa-users"></i>
+                    <span>Community</span>
+                </div>
+                <div class="nav-item" data-route="marketplace.html">
+                    <i class="fas fa-tractor"></i>
+                    <span>Marketplace</span>
+                </div>
+                <div class="nav-item" data-route="profile.html">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer-card">
+                <img src="assets/farmer.png" alt="Farmer Illustration">
+                <h4>Hello, Farmer!</h4>
+                <p>Let's grow together and build a better tomorrow.</p>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Header Section -->
+            <header class="page-header">
+                <h2>Crop Detection</h2>
+                <p>Upload crop image to detect disease and get treatment suggestions</p>
+            </header>
+
+            <!-- Upload Section -->
+            <section class="upload-container">
+                <div class="upload-card">
+                    <div class="upload-box" id="drop-zone">
+                        <div class="upload-left">
+                            <div class="upload-icon-circle">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <div class="upload-text">
+                                <p class="primary-text">Drag & drop your crop image here</p>
+                                <p class="divider">or</p>
+                                <label for="file-upload" class="browse-btn">Browse File</label>
+                                <input type="file" id="file-upload" accept="image/*" hidden>
+                            </div>
+                        </div>
+                        <div class="upload-right">
+                            <div class="preview-wrapper" id="preview-container">
+                                <div class="placeholder-preview">
+                                    <i class="far fa-image"></i>
+                                    <span>Preview Area</span>
+                                </div>
+                                <img src="" id="image-preview" alt="Crop Preview" style="display: none;">
+                            </div>
+                            <p id="filename-text" class="filename"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analyze-action">
+                    <button id="analyze-btn" class="analyze-btn" disabled>Analyze Crop</button>
+                </div>
+            </section>
+
+            <!-- Result Section (Initially Hidden) -->
+            <section class="result-container" id="result-section" style="display: none;">
+                <div class="result-card">
+                    <div class="result-layout">
+                        <div class="result-left">
+                            <img src="" id="result-image" alt="Analyzed Crop">
+                        </div>
+                        <div class="result-center">
+                            <div class="disease-header">
+                                <h3 id="disease-name">Detecting...</h3>
+                                <div class="badge-group">
+                                    <span class="status-badge" id="status-badge">Status</span>
+                                    <span class="severity-badge" id="severity-badge">Severity</span>
+                                    <span class="mode-badge" id="detection-mode">Mode</span>
+                                </div>
+                            </div>
+                            <div class="confidence-box">
+                                <div class="confidence-label">
+                                    <span>Confidence Score</span>
+                                    <strong id="confidence-value">0%</strong>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="confidence-fill" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                            <p id="mode-warning" style="font-size: 0.85rem; margin-top: 10px; font-weight: 500;"></p>
+                        </div>
+                        <div class="result-right">
+                            <div class="about-disease">
+                                <h4>About this disease</h4>
+                                <p id="disease-desc">Detection results will appear here.</p>
+                            </div>
+                            <div id="top-predictions" class="top-predictions-box" style="margin-top: 15px;">
+                                <!-- Top predictions will be injected here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Treatment Section -->
+                <div class="treatment-grid">
+                    <div class="treatment-block">
+                        <div class="block-title">
+                            <i class="fas fa-pills"></i>
+                            <h4>Suggested Treatment</h4>
+                        </div>
+                        <ul class="treatment-list" id="treatment-list">
+                            <!-- Injected by JS -->
+                        </ul>
+                    </div>
+                    <div class="preventive-block">
+                        <div class="block-title">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Preventive Measures</h4>
+                        </div>
+                        <div class="measures-box" id="measures-list">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="result-actions">
+                    <button class="save-btn"><i class="far fa-save"></i> Save Result</button>
+                    <button class="ai-btn"><i class="fas fa-robot"></i> Ask AI Assistant</button>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Right Panel -->
+        <aside class="right-panel">
+            
+            <!-- Weather Card -->
+            <div class="panel-card-info">
+                <div class="weather-widget">
+                    <span class="weather-loc">Nashik, Maharashtra</span>
+                    <div class="weather-main">
+                        <i class="fas fa-sun"></i>
+                        <h2>28°C</h2>
+                    </div>
+                    <div class="weather-details-grid">
+                        <div class="w-item">
+                            <span>Humidity</span>
+                            <strong>45%</strong>
+                        </div>
+                        <div class="w-item">
+                            <span>Wind</span>
+                            <strong>12 km/h</strong>
+                        </div>
+                        <div class="w-item">
+                            <span>Rain</span>
+                            <strong>10%</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Farming Tip -->
+            <div class="panel-card-info">
+                <div class="tip-widget">
+                    <div class="tip-title">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Farming Tip of the Day</span>
+                    </div>
+                    <p>Crop rotation helps break pest cycles and improves soil nutrients naturally.</p>
+                    <img src="assets/tip.png" class="tip-img" alt="Plant Tip">
+                </div>
+            </div>
+
+            <!-- Announcements -->
+            <div class="panel-card-info ann-widget">
+                <h3>Announcements</h3>
+                <div class="ann-list">
+                    <div class="ann-item">
+                        <i class="fas fa-bullhorn"></i>
+                        <div class="ann-text">
+                            <h4>New scheme for drip irrigation</h4>
+                            <span>May 10, 2026</span>
+                        </div>
+                    </div>
+                    <div class="ann-item">
+                        <i class="fas fa-info-circle"></i>
+                        <div class="ann-text">
+                            <h4>Fertilizer subsidy update</h4>
+                            <span>May 15, 2026</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <script type="module" src="crop-detection.js"></script>
+    <script src="navigation.js"></script>
+    <script type="module" src="js/chatbot.js"></script>`n</body>
+</html>
+

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroVerse - My Profile</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="profile.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <div class="logo-wrapper">
+                    <img src="assets/favicon.png" alt="AgroVerse Logo">
+                    <h1>AgroVerse</h1>
+                </div>
+                <p>Smart Farming, Better Future</p>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-item" data-route="index.html">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </div>
+                <div class="nav-item" data-route="dashboard.html">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item" data-route="crop.html">
+                    <i class="fas fa-leaf"></i>
+                    <span>Crop Detection</span>
+                </div>
+                <div class="nav-item" data-route="schemes.html">
+                    <i class="fas fa-file-invoice"></i>
+                    <span>Govt Schemes</span>
+                </div>
+                <div class="nav-item" data-route="community.html">
+                    <i class="fas fa-users"></i>
+                    <span>Community</span>
+                </div>
+                <div class="nav-item" data-route="marketplace.html">
+                    <i class="fas fa-tractor"></i>
+                    <span>Marketplace</span>
+                </div>
+                <div class="nav-item" data-route="profile.html">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer-card">
+                <img src="assets/farmer.png" alt="Farmer Illustration">
+                <h4>Hello, Farmer!</h4>
+                <p>Let's grow together and build a better tomorrow.</p>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Header Section -->
+            <header class="page-header">
+                <h2>My Profile</h2>
+                <p>Manage your profile and account settings</p>
+            </header>
+
+            <!-- Profile Summary Card -->
+            <section class="profile-card-container">
+                <div class="profile-main-card">
+                    <div class="profile-left">
+                        <div class="avatar-wrapper">
+                            <img src="https://ui-avatars.com/api/?name=Harish+Patil&background=2ecc71&color=fff&size=128" alt="Profile Picture">
+                            <button class="edit-avatar-btn"><i class="fas fa-camera"></i></button>
+                        </div>
+                        <div class="profile-basic-info">
+                            <h3>Harish Patil</h3>
+                            <span class="verified-badge"><i class="fas fa-check-circle"></i> Verified Farmer</span>
+                            <div class="info-list">
+                                <div class="info-item"><i class="fas fa-id-card"></i> ID: AGV-2026-0421</div>
+                                <div class="info-item"><i class="fas fa-map-marker-alt"></i> Nashik, Maharashtra</div>
+                                <div class="info-item"><i class="fas fa-phone-alt"></i> +91 98765 43210</div>
+                                <div class="info-item"><i class="fas fa-envelope"></i> harish.patil@agroverse.com</div>
+                                <div class="info-item"><i class="far fa-calendar-alt"></i> Member since April 2024</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-right">
+                        <div class="section-header">
+                            <h4>Personal Information</h4>
+                            <button class="text-edit-btn">Edit</button>
+                        </div>
+                        <div class="info-grid">
+                            <div class="grid-field">
+                                <label>Full Name</label>
+                                <span>Harish Patil</span>
+                            </div>
+                            <div class="grid-field">
+                                <label>Date of Birth</label>
+                                <span>12 May 1985</span>
+                            </div>
+                            <div class="grid-field">
+                                <label>Gender</label>
+                                <span>Male</span>
+                            </div>
+                            <div class="grid-field">
+                                <label>Farm Type</label>
+                                <span>Organic Farming</span>
+                            </div>
+                            <div class="grid-field">
+                                <label>Land Holding</label>
+                                <span>5.5 Acres</span>
+                            </div>
+                            <div class="grid-field">
+                                <label>Experience</label>
+                                <span>12 Years</span>
+                            </div>
+                            <div class="grid-field full-width">
+                                <label>Address</label>
+                                <span>Plot No. 45, Green Valley Farm, near Nashik Highway, Nashik, Maharashtra - 422001</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Preferences Section -->
+            <section class="preferences-container">
+                <div class="pref-card">
+                    <div class="pref-icon"><i class="fas fa-language"></i></div>
+                    <div class="pref-content">
+                        <label>Language</label>
+                        <select class="pref-select">
+                            <option>English</option>
+                            <option>Marathi</option>
+                            <option>Hindi</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="pref-card">
+                    <div class="pref-icon"><i class="fas fa-adjust"></i></div>
+                    <div class="pref-content">
+                        <label>Theme</label>
+                        <div class="theme-toggle">
+                            <button class="toggle-btn active">Light</button>
+                            <button class="toggle-btn">Dark</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Account & Security -->
+            <section class="security-container">
+                <div class="security-card">
+                    <h4>Account & Security</h4>
+                    <div class="security-row">
+                        <div class="row-left">
+                            <i class="fas fa-lock"></i>
+                            <span>Change Password</span>
+                        </div>
+                        <i class="fas fa-chevron-right arrow-icon"></i>
+                    </div>
+                    <div class="security-row">
+                        <div class="row-left">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Two-Factor Authentication</span>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="about-container">
+                <div class="about-card">
+                    <h4>About AgroVerse</h4>
+                    <p>AgroVerse is a modern digital platform dedicated to empowering farmers with cutting-edge technology, market access, and community support.</p>
+                    <div class="about-meta">
+                        <span>Version 2.4.0 (Stable)</span>
+                        <span>support@agroverse.com</span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Right Panel -->
+        <aside class="right-panel">
+            
+            <!-- Quick Actions -->
+            <div class="panel-card-info">
+                <h3 class="panel-title">Quick Actions</h3>
+                <ul class="action-list">
+                    <li><i class="fas fa-user-edit"></i> Edit Profile</li>
+                    <li><i class="fas fa-tractor"></i> Manage Farm Details</li>
+                    <li><i class="fas fa-credit-card"></i> Payment Methods</li>
+                    <li><i class="fas fa-bell"></i> Notification Settings</li>
+                    <li><i class="fas fa-user-shield"></i> Privacy Settings</li>
+                </ul>
+            </div>
+
+            <!-- App Settings -->
+            <div class="panel-card-info">
+                <h3 class="panel-title">App Settings</h3>
+                <ul class="settings-list">
+                    <li>
+                        <span>Language</span>
+                        <span class="muted">English</span>
+                    </li>
+                    <li>
+                        <span>Theme</span>
+                        <span class="muted">Light</span>
+                    </li>
+                    <li>
+                        <span>Notifications</span>
+                        <span class="muted">Enabled</span>
+                    </li>
+                    <li>
+                        <span>Data Saver</span>
+                        <label class="switch small">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </li>
+                    <li>
+                        <span>Help & Support</span>
+                        <i class="fas fa-external-link-alt small-icon"></i>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Help Card -->
+            <div class="panel-card-info help-card-bg">
+                <h3 class="panel-title">Need Help?</h3>
+                <p>Facing issues or have questions? Our support team is here to help you 24/7.</p>
+                <button class="contact-support-btn">Contact Support</button>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <script src="navigation.js"></script>
+    <script type="module" src="js/profile.js"></script>
+    <script type="module" src="js/chatbot.js"></script>`n</body>
+</html>
+

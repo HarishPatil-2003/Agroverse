@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroVerse - Govt Schemes</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="govt-schemes.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <div class="logo-wrapper">
+                    <img src="assets/favicon.png" alt="AgroVerse Logo">
+                    <h1>AgroVerse</h1>
+                </div>
+                <p>Smart Farming, Better Future</p>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-item" data-route="index.html">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </div>
+                <div class="nav-item" data-route="dashboard.html">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item" data-route="crop.html">
+                    <i class="fas fa-leaf"></i>
+                    <span>Crop Detection</span>
+                </div>
+                <div class="nav-item" data-route="schemes.html">
+                    <i class="fas fa-file-invoice"></i>
+                    <span>Govt Schemes</span>
+                </div>
+                <div class="nav-item" data-route="community.html">
+                    <i class="fas fa-users"></i>
+                    <span>Community</span>
+                </div>
+                <div class="nav-item" data-route="marketplace.html">
+                    <i class="fas fa-tractor"></i>
+                    <span>Marketplace</span>
+                </div>
+                <div class="nav-item" data-route="profile.html">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer-card">
+                <img src="assets/farmer.png" alt="Farmer Illustration">
+                <h4>Hello, Farmer!</h4>
+                <p>Let's grow together and build a better tomorrow.</p>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Header Section -->
+            <header class="page-header">
+                <h2>Govt Schemes</h2>
+                <p>Find and apply for schemes relevant to your farm</p>
+            </header>
+
+            <!-- Search + Filter Bar -->
+            <section class="filter-bar">
+                <div class="search-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search schemes (e.g., irrigation, subsidy...)">
+                </div>
+                <div class="dropdowns-wrapper">
+                    <button class="dropdown-btn">Crop Type <i class="fas fa-chevron-down"></i></button>
+                    <button class="dropdown-btn">State <i class="fas fa-chevron-down"></i></button>
+                    <button class="dropdown-btn">Category <i class="fas fa-chevron-down"></i></button>
+                </div>
+            </section>
+
+            <!-- Scheme List -->
+            <section class="scheme-list">
+                <!-- Scheme Card 1 -->
+                <div class="scheme-card">
+                    <div class="card-left">
+                        <div class="icon-circle subsidy">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                    </div>
+                    <div class="card-center">
+                        <div class="scheme-title-box">
+                            <h3>PM-Kisan Samman Nidhi</h3>
+                            <div class="badge-row">
+                                <span class="badge subsidy-tag">Subsidy</span>
+                                <span class="badge primary-tag">Direct Benefit</span>
+                            </div>
+                        </div>
+                        <p class="description">Income support of ₹6,000 per year in three equal installments to all landholding farmer families.</p>
+                        <p class="eligibility">Eligibility: All landholding farmers across the country.</p>
+                    </div>
+                    <div class="card-right">
+                        <span class="status-pill eligible">Eligible</span>
+                        <div class="action-group">
+                            <button class="apply-btn">Apply Now</button>
+                            <a href="#" class="details-link">View Details <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scheme Card 2 -->
+                <div class="scheme-card">
+                    <div class="card-left">
+                        <div class="icon-circle insurance">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <div class="card-center">
+                        <div class="scheme-title-box">
+                            <h3>Pradhan Mantri Fasal Bima Yojana</h3>
+                            <div class="badge-row">
+                                <span class="badge insurance-tag">Insurance</span>
+                            </div>
+                        </div>
+                        <p class="description">Crop insurance scheme to provide financial support to farmers suffering from crop loss/damage.</p>
+                        <p class="eligibility">Eligibility: Farmers growing notified crops in notified areas.</p>
+                    </div>
+                    <div class="card-right">
+                        <span class="status-pill eligible">Eligible</span>
+                        <div class="action-group">
+                            <button class="apply-btn">Apply Now</button>
+                            <a href="#" class="details-link">View Details <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scheme Card 3 -->
+                <div class="scheme-card">
+                    <div class="card-left">
+                        <div class="icon-circle loan">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                    </div>
+                    <div class="card-center">
+                        <div class="scheme-title-box">
+                            <h3>Kisan Credit Card (KCC)</h3>
+                            <div class="badge-row">
+                                <span class="badge loan-tag">Loan</span>
+                            </div>
+                        </div>
+                        <p class="description">To provide adequate and timely credit support from the banking system for cultivation and other needs.</p>
+                        <p class="eligibility">Eligibility: Owner cultivators, Tenant farmers, Sharecroppers.</p>
+                    </div>
+                    <div class="card-right">
+                        <span class="status-pill not-eligible">Not Eligible</span>
+                        <div class="action-group">
+                            <button class="apply-btn" disabled>Apply Now</button>
+                            <a href="#" class="details-link">View Details <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Applied Schemes Section -->
+            <section class="applied-schemes">
+                <h2 class="section-title">Applied Schemes</h2>
+                <div class="applied-grid">
+                    <!-- Applied Card 1 -->
+                    <div class="applied-card">
+                        <div class="applied-header">
+                            <i class="fas fa-check-circle approved-icon"></i>
+                            <h4>Micro Irrigation Fund</h4>
+                        </div>
+                        <div class="applied-body">
+                            <p class="apply-date">Applied: 12 Mar 2026</p>
+                            <span class="status-badge approved">Approved</span>
+                        </div>
+                    </div>
+
+                    <!-- Applied Card 2 -->
+                    <div class="applied-card">
+                        <div class="applied-header">
+                            <i class="fas fa-spinner review-icon"></i>
+                            <h4>Soil Health Card</h4>
+                        </div>
+                        <div class="applied-body">
+                            <p class="apply-date">Applied: 25 Apr 2026</p>
+                            <span class="status-badge review">Under Review</span>
+                        </div>
+                    </div>
+
+                    <!-- Applied Card 3 -->
+                    <div class="applied-card">
+                        <div class="applied-header">
+                            <i class="fas fa-check-circle approved-icon"></i>
+                            <h4>PM-Kisan (Kist 12)</h4>
+                        </div>
+                        <div class="applied-body">
+                            <p class="apply-date">Applied: 05 Jan 2026</p>
+                            <span class="status-badge approved">Approved</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Right Panel -->
+        <aside class="right-panel">
+            
+            <!-- Important Deadlines -->
+            <div class="panel-card-info deadline-widget">
+                <h3 class="panel-title">Important Deadlines</h3>
+                <div class="deadline-list">
+                    <div class="deadline-item">
+                        <div class="date-box">
+                            <span class="day">15</span>
+                            <span class="month">MAY</span>
+                        </div>
+                        <div class="deadline-text">
+                            <h4>KCC Interest Rebate</h4>
+                            <p>Deadline: 15 May 2026</p>
+                        </div>
+                    </div>
+                    <div class="deadline-item">
+                        <div class="date-box warning">
+                            <span class="day">20</span>
+                            <span class="month">MAY</span>
+                        </div>
+                        <div class="deadline-text">
+                            <h4>Crop Insurance (Kharif)</h4>
+                            <p>Deadline: 20 May 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Farming Tip -->
+            <div class="panel-card-info">
+                <div class="tip-widget">
+                    <div class="tip-title">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Farming Tip of the Day</span>
+                    </div>
+                    <p>Register on the e-NAM portal to access pan-India trade for your produce.</p>
+                    <img src="assets/tip.png" class="tip-img" alt="Plant Tip">
+                </div>
+            </div>
+
+            <!-- Announcements -->
+            <div class="panel-card-info ann-widget">
+                <h3>Announcements</h3>
+                <div class="ann-list">
+                    <div class="ann-item">
+                        <i class="fas fa-bullhorn"></i>
+                        <div class="ann-text">
+                            <h4>New scheme for drip irrigation</h4>
+                            <span>May 10, 2026</span>
+                        </div>
+                    </div>
+                    <div class="ann-item">
+                        <i class="fas fa-info-circle"></i>
+                        <div class="ann-text">
+                            <h4>Fertilizer subsidy update</h4>
+                            <span>May 15, 2026</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="view-all-link">View all announcements</a>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <script src="navigation.js"></script>
+    <script type="module" src="js/schemes.js"></script>
+    <script type="module" src="js/chatbot.js"></script>`n</body>
+</html>
+

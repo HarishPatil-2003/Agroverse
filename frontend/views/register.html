@@ -1,0 +1,98 @@
+<div class="auth-wrapper" style="width: 100%; min-height: calc(100vh - 120px); display: flex; justify-content: center; align-items: center; padding: 30px 16px; background: radial-gradient(ellipse at 50% 10%, rgba(22, 163, 74, 0.08) 0%, transparent 65%);">
+    <div class="auth-container" style="width: 100%; max-width: 560px; padding: 40px; background: var(--bg-surface, #ffffff); border-radius: 20px; box-shadow: 0 20px 45px -10px rgba(15, 51, 35, 0.12), 0 0 0 1px rgba(22, 163, 74, 0.08); text-align: center; border: 1px solid var(--border-light, #e5e7eb); transition: all 0.3s ease;">
+        
+        <div style="background: linear-gradient(135deg, rgba(22, 163, 74, 0.12) 0%, rgba(20, 61, 43, 0.08) 100%); width: 72px; height: 72px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 16px; border: 1px solid rgba(22, 163, 74, 0.2);">
+            <img src="assets/favicon.png" alt="AgroVerse Logo" style="width: 44px; height: 44px; object-fit: contain;">
+        </div>
+
+        <h2 style="color: var(--text-primary, #111827); margin-bottom: 6px; font-size: 26px; font-weight: 800; letter-spacing: -0.02em;" data-i18n="auth.createAccount">Create Farmer Account</h2>
+        <p style="color: var(--text-muted, #6b7280); margin-bottom: 24px; font-size: 14px;" data-i18n="auth.registerSubtitle">Register to access AI crop diagnostics and farming tools</p>
+
+        <form id="register-form" style="display: flex; flex-direction: column; gap: 16px; text-align: left;">
+            <div id="register-error" style="display: none; color: #dc2626; font-size: 13px; text-align: center; padding: 12px 14px; background: #fef2f2; border-radius: 10px; border: 1px solid #fecaca; animation: shake 0.4s ease-in-out;"></div>
+            
+            <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 220px;">
+                    <label class="auth-label" data-i18n="auth.fullName">Full Name *</label>
+                    <input type="text" id="reg-name" required placeholder="Harish Patil" class="auth-input" autocomplete="name">
+                </div>
+                <div style="flex: 1; min-width: 220px;">
+                    <label class="auth-label" data-i18n="auth.email">Email Address *</label>
+                    <input type="email" id="reg-email" required placeholder="farmer@example.com" class="auth-input" autocomplete="email">
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 220px; position: relative;">
+                    <label class="auth-label" data-i18n="auth.password">Password *</label>
+                    <input type="password" id="reg-password" required minlength="6" placeholder="At least 6 characters" class="auth-input" style="padding-right: 40px;" autocomplete="new-password">
+                    <i class="fas fa-eye toggle-reg-pwd" data-target="reg-password" style="position: absolute; right: 14px; top: 38px; color: var(--text-muted, #6b7280); cursor: pointer; transition: color 0.2s;"></i>
+                </div>
+                <div style="flex: 1; min-width: 220px; position: relative;">
+                    <label class="auth-label" data-i18n="auth.confirmPassword">Confirm Password *</label>
+                    <input type="password" id="reg-confirm" required minlength="6" placeholder="Repeat password" class="auth-input" style="padding-right: 40px;" autocomplete="new-password">
+                    <i class="fas fa-eye toggle-reg-pwd" data-target="reg-confirm" style="position: absolute; right: 14px; top: 38px; color: var(--text-muted, #6b7280); cursor: pointer; transition: color 0.2s;"></i>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 220px;">
+                    <label class="auth-label" data-i18n="auth.phone">Phone Number</label>
+                    <input type="tel" id="reg-phone" placeholder="9876543210" class="auth-input" autocomplete="tel">
+                </div>
+                <div style="flex: 1; min-width: 220px;">
+                    <label class="auth-label" data-i18n="auth.location">Location (District, State) *</label>
+                    <input type="text" id="reg-location" required placeholder="Nashik, Maharashtra" class="auth-input" autocomplete="address-level2">
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 220px;">
+                    <label class="auth-label" data-i18n="auth.farmType">Farm Type *</label>
+                    <select id="reg-farm" required class="auth-input">
+                        <option value="">Select farm type...</option>
+                        <option value="Crop Farming">Crop Farming (Vegetables, Grains)</option>
+                        <option value="Horticulture">Horticulture (Fruits, Flowers)</option>
+                        <option value="Dairy">Dairy & Livestock</option>
+                        <option value="Mixed">Mixed Farming</option>
+                        <option value="Organic">Organic Agriculture</option>
+                    </select>
+                </div>
+                <div style="flex: 1; min-width: 220px;">
+                    <label class="auth-label" data-i18n="auth.landHolding">Land Area (in Acres) *</label>
+                    <input type="number" id="reg-land" name="landHolding" min="0.1" max="10000" step="0.1" required placeholder="e.g. 5.0" class="auth-input" autocomplete="off">
+                </div>
+            </div>
+
+            <div>
+                <label class="auth-label" data-i18n="auth.language">Preferred Language</label>
+                <select id="reg-lang" class="auth-input">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी (Hindi)</option>
+                    <option value="mr">मराठी (Marathi)</option>
+                </select>
+            </div>
+
+            <button type="submit" id="register-btn" class="auth-btn" style="width: 100%; margin-top: 10px;">
+                <span data-i18n="auth.registerBtn">Create Farmer Account</span>
+            </button>
+        </form>
+
+        <p style="margin-top: 24px; font-size: 14px; color: var(--text-muted, #6b7280);">
+            <span data-i18n="auth.alreadyHaveAccount">Already have an account?</span> 
+            <a href="#login" style="color: var(--brand-leaf-500, #16a34a); text-decoration: none; font-weight: 700; transition: color 0.2s; margin-left: 4px;" data-i18n="auth.login">Login</a>
+        </p>
+    </div>
+</div>
+
+<style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+    .auth-label { font-size: 13px; font-weight: 600; display: block; margin-bottom: 6px; color: var(--text-primary, #111827); }
+    .auth-input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border-subtle, #e2e8f0); border-radius: 10px; font-size: 14px; outline: none; transition: all 0.2s; background: var(--bg-surface-soft, #f8fafc); box-sizing: border-box; color: var(--text-primary, #111827); }
+    .auth-input:focus { border-color: var(--brand-leaf-500, #16a34a); background: var(--bg-surface, #ffffff); box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15); }
+    .auth-btn { background: linear-gradient(135deg, var(--brand-leaf-500, #16a34a) 0%, var(--brand-leaf-600, #15803d) 100%); color: white; border: none; padding: 14px; border-radius: 10px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.25); display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .auth-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(22, 163, 74, 0.35); filter: brightness(1.03); }
+    .auth-btn:active { transform: translateY(0); }
+    .auth-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+</style>

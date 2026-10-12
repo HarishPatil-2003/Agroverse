@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroVerse - Dashboard</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="dashboard.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <div class="logo-wrapper">
+                    <img src="assets/favicon.png" alt="AgroVerse Logo">
+                    <h1>AgroVerse</h1>
+                </div>
+                <p>Smart Farming, Better Future</p>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-item active" data-route="index.html">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </div>
+                <div class="nav-item" data-route="crop.html">
+                    <i class="fas fa-leaf"></i>
+                    <span>Crop Detection</span>
+                </div>
+                <div class="nav-item" data-route="schemes.html">
+                    <i class="fas fa-file-invoice"></i>
+                    <span>Govt Schemes</span>
+                </div>
+                <div class="nav-item" data-route="community.html">
+                    <i class="fas fa-users"></i>
+                    <span>Community</span>
+                </div>
+                <div class="nav-item" data-route="marketplace.html">
+                    <i class="fas fa-tractor"></i>
+                    <span>Marketplace</span>
+                </div>
+                <div class="nav-item" data-route="profile.html">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer-card">
+                <img id="sidebar-footer-img" src="assets/farmer.png" alt="Farmer Illustration">
+                <div class="footer-card-text">
+                    <h4 id="sidebar-user-greeting">Hello, Farmer!</h4>
+                    <p id="sidebar-user-id-footer">Farmer ID: #----</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Top Header -->
+            <header class="header">
+                <div class="header-left">
+                    <div class="welcome-msg">
+                        <i class="fas fa-bars" style="font-size: 20px; cursor: pointer; color: var(--color-text);"></i>
+                        <h2 id="header-welcome-msg">Welcome back! 🌱</h2>
+                    </div>
+                    <p class="subtitle" id="header-subtitle">Your farming dashboard is ready.</p>
+                </div>
+                
+                <div class="header-right">
+                    <div class="icon-btn">
+                        <i class="far fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-meta" id="header-user-meta" onclick="window.location.hash='#profile'" style="cursor: pointer;">
+                        <img id="header-user-avatar" src="https://ui-avatars.com/api/?name=User&background=2ecc71&color=fff" alt="User">
+                        <div class="text-info">
+                            <span class="name" id="header-user-name">Loading...</span>
+                            <span class="id" id="header-user-id">Farmer ID: #----</span>
+                        </div>
+                        <i class="fas fa-chevron-down" style="font-size: 11px; color: var(--text-light);"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Stat Cards Row -->
+            <section class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-icon icon-green">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>12</h3>
+                        <p>Active Crops</p>
+                        <a href="#">Manage Crops</a>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon icon-orange">
+                        <i class="fas fa-tractor"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>8</h3>
+                        <p>Active Listings</p>
+                        <a href="#">Go to Shop</a>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon icon-blue">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>3</h3>
+                        <p>New Notifications</p>
+                        <a href="#">View All</a>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon icon-purple">
+                        <i class="far fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>5</h3>
+                        <p>Tasks for Today</p>
+                        <a href="#">Open Planner</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Center Sections Grid -->
+            <section class="sections-grid">
+                
+                <!-- My Crops Panel -->
+                <div class="card-panel">
+                    <div class="panel-header">
+                        <h3>My Crops</h3>
+                        <a href="#" class="btn-link">View All</a>
+                    </div>
+                    <div class="crops-list">
+                        <div class="crop-item">
+                            <div class="crop-info-wrapper">
+                                <img src="assets/tomato.png" class="crop-img" alt="Tomato">
+                                <div class="crop-details">
+                                    <h4>Tomato</h4>
+                                    <p>Field A-12</p>
+                                </div>
+                            </div>
+                            <span class="status-badge healthy">Healthy</span>
+                            <span class="check-date">Checked: 2h ago</span>
+                        </div>
+                        <div class="crop-item">
+                            <div class="crop-info-wrapper">
+                                <img src="assets/wheat.png" class="crop-img" alt="Wheat">
+                                <div class="crop-details">
+                                    <h4>Wheat</h4>
+                                    <p>North Field</p>
+                                </div>
+                            </div>
+                            <span class="status-badge good">Good</span>
+                            <span class="check-date">Checked: 5h ago</span>
+                        </div>
+                        <div class="crop-item">
+                            <div class="crop-info-wrapper">
+                                <img src="assets/corn.png" class="crop-img" alt="Corn">
+                                <div class="crop-details">
+                                    <h4>Corn</h4>
+                                    <p>East Zone</p>
+                                </div>
+                            </div>
+                            <span class="status-badge attention">Needs Attention</span>
+                            <span class="check-date">Checked: 1d ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Today's Tasks Panel -->
+                <div class="card-panel">
+                    <div class="panel-header">
+                        <h3>Today's Tasks</h3>
+                        <a href="#" class="btn-link">Planner</a>
+                    </div>
+                    <div class="tasks-list">
+                        <div class="task-item">
+                            <div class="task-info">
+                                <div class="task-circle" style="background: #e3f2fd; color: #1565c0;">
+                                    <i class="fas fa-tint"></i>
+                                </div>
+                                <div class="task-text">
+                                    <h4>Irrigation Due</h4>
+                                    <p>Field A-12 • Tomato</p>
+                                </div>
+                            </div>
+                            <span class="task-date" style="color: #3498db;">08:30 AM</span>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-info">
+                                <div class="task-circle" style="background: #fff3e0; color: #ef6c00;">
+                                    <i class="fas fa-flask"></i>
+                                </div>
+                                <div class="task-text">
+                                    <h4>Fertilizer Schedule</h4>
+                                    <p>North Field • Wheat</p>
+                                </div>
+                            </div>
+                            <span class="task-date" style="color: #e67e22;">11:00 AM</span>
+                        </div>
+                        <div class="task-item">
+                            <div class="task-info">
+                                <div class="task-circle" style="background: #f3e5f5; color: #7b1fa2;">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="task-text">
+                                    <h4>Scheme Deadline</h4>
+                                    <p>Govt Subsidy Form</p>
+                                </div>
+                            </div>
+                            <span class="task-date" style="color: #9b59b6;">05:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lower Sections Grid -->
+            <section class="lower-grid">
+                
+                <!-- Community Snapshot -->
+                <div class="card-panel community-card">
+                    <div class="panel-header">
+                        <h3>Community Snapshot</h3>
+                    </div>
+                    <div class="post-header">
+                        <img src="https://ui-avatars.com/api/?name=Rajesh+Kumar&background=3498db&color=fff" alt="Avatar">
+                        <div class="post-meta">
+                            <h4>Rajesh Kumar</h4>
+                            <span>2 hours ago</span>
+                        </div>
+                    </div>
+                    <p class="post-content">
+                        "Does anyone have experience with organic pesticides for tomato blight? My crops in Nashik area are showing early signs of yellowing."
+                    </p>
+                    <div class="post-footer">
+                        <div class="stats-icons">
+                            <span><i class="far fa-thumbs-up"></i> 12</span>
+                            <span><i class="far fa-comment"></i> 5</span>
+                        </div>
+                        <button class="action-btn">Go to Community</button>
+                    </div>
+                </div>
+
+                <!-- Marketplace Summary -->
+                <div class="card-panel">
+                    <div class="panel-header">
+                        <h3>Marketplace Summary</h3>
+                    </div>
+                    <div class="marketplace-stats">
+                        <div class="m-stat">
+                            <span>Total Products</span>
+                            <strong>15</strong>
+                        </div>
+                        <div class="m-stat">
+                            <span>Active Listings</span>
+                            <strong>8</strong>
+                        </div>
+                    </div>
+                    <div class="recent-product">
+                        <i class="fas fa-check-circle" style="color: #2ecc71;"></i>
+                        <span>Recent: <strong>Organic Fertilizer</strong> (Listed)</span>
+                    </div>
+                    <button class="full-btn">Add New Product</button>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- Right Panel -->
+        <aside class="right-panel">
+            
+            <!-- Weather Card -->
+            <div class="panel-card-info weather-card">
+                <div class="weather-header">
+                    <i class="fas fa-cloud-sun"></i>
+                    <span>Live Weather</span>
+                </div>
+                <div class="weather-search-row">
+                    <div class="search-input-wrapper">
+                        <input type="text" placeholder="Unknown Location" id="weather-city-input">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                    <button class="gps-btn" id="weather-gps-btn"><i class="fas fa-location-arrow"></i></button>
+                </div>
+
+                <div class="api-notice-card">
+                    <div class="notice-main">
+                        <i class="fas fa-clock notice-icon"></i>
+                        <div class="notice-text">
+                            <h4>API Key Activating</h4>
+                            <p>Your OpenWeatherMap key is being activated. This usually takes <strong>up to 2 hours</strong> for new accounts.</p>
+                        </div>
+                    </div>
+                    <p class="retry-text">Auto-retrying every 2 minutes...</p>
+                    <div class="notice-footer">
+                        <span>Updated just now</span>
+                        <i class="fas fa-sync-alt refresh-icon"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Farming Tip -->
+            <div class="panel-card-info tip-card">
+                <div class="tip-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Farming Tip of the Day</span>
+                </div>
+                <p>Crop rotation helps break pest cycles and improves soil nutrients naturally.</p>
+                <div class="tip-image-wrapper">
+                    <img src="assets/tip.png" alt="Farming Tip">
+                    <div class="plant-badge">
+                        <img src="assets/favicon.png" alt="AgroVerse">
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <script src="navigation.js"></script>
+    <script type="module" src="js/chatbot.js"></script>
+    <script type="module">
+        import { auth } from './js/auth.js';
+        
+        async function updateDashboardUserInfo() {
+            const user = await auth.getSession();
+            if (!user) return;
+
+            const nameMain = document.getElementById('header-user-name');
+            const idMain = document.getElementById('header-user-id');
+            const avatarMain = document.getElementById('header-user-avatar');
+            const welcomeMsg = document.getElementById('header-welcome-msg');
+            
+            const sidebarGreeting = document.getElementById('sidebar-user-greeting');
+            const sidebarId = document.getElementById('sidebar-user-id-footer');
+            const sidebarImg = document.getElementById('sidebar-footer-img');
+
+            const firstName = user.firstName || user.fullName?.split(' ')[0] || 'Farmer';
+            const fullName = user.fullName || 'Farmer';
+            const farmerId = user.farmerId || '----';
+
+            // Greeting Logic
+            const isNewUser = localStorage.getItem('agroverse_new_user') === 'true';
+            if (isNewUser) {
+                welcomeMsg.textContent = `Welcome, ${firstName} 🌱`;
+                localStorage.removeItem('agroverse_new_user');
+            } else {
+                welcomeMsg.textContent = `Welcome back, ${firstName} 🌱`;
+            }
+
+            if (nameMain) nameMain.textContent = fullName;
+            if (idMain) idMain.textContent = `Farmer ID: #${farmerId}`;
+            if (sidebarGreeting) sidebarGreeting.textContent = `Hello, ${firstName}!`;
+            if (sidebarId) sidebarId.textContent = `ID: #${farmerId}`;
+
+            const avatarUrl = window.resolveImageUrl(user.profileImageUrl) || `https://ui-avatars.com/api/?name=${encodeURIComponent(fullName)}&background=2ecc71&color=fff`;
+            if (avatarMain) avatarMain.src = avatarUrl;
+            if (sidebarImg) sidebarImg.src = avatarUrl;
+        }
+
+        window.updateDashboardUserInfo = updateDashboardUserInfo;
+        
+        // Initial load
+        document.addEventListener('DOMContentLoaded', updateDashboardUserInfo);
+        
+        // Listen for route changes to re-sync if needed
+        window.addEventListener('hashchange', updateDashboardUserInfo);
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+<div class="auth-wrapper" style="width: 100%; min-height: calc(100vh - 120px); display: flex; justify-content: center; align-items: center; padding: 40px 16px; background: radial-gradient(ellipse at 50% 15%, rgba(22, 163, 74, 0.09) 0%, transparent 65%);">
+    <div class="auth-container" style="width: 100%; max-width: 460px; padding: 40px; background: var(--bg-surface, #ffffff); border-radius: 20px; box-shadow: 0 20px 45px -10px rgba(15, 51, 35, 0.12), 0 0 0 1px rgba(22, 163, 74, 0.08); text-align: center; border: 1px solid var(--border-light, #e5e7eb); transition: all 0.3s ease;">
+        
+        <div style="background: linear-gradient(135deg, rgba(22, 163, 74, 0.12) 0%, rgba(20, 61, 43, 0.08) 100%); width: 72px; height: 72px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 18px; border: 1px solid rgba(22, 163, 74, 0.2);">
+            <img src="assets/favicon.png" alt="AgroVerse Logo" style="width: 44px; height: 44px; object-fit: contain;">
+        </div>
+
+        <h2 style="color: var(--text-primary, #111827); margin-bottom: 6px; font-size: 26px; font-weight: 800; letter-spacing: -0.02em;" data-i18n="auth.welcomeBack">Welcome Back</h2>
+        <p style="color: var(--text-muted, #6b7280); margin-bottom: 28px; font-size: 14px;" data-i18n="auth.loginSubtitle">Login to manage your smart farm dashboard</p>
+
+        <form id="login-form" style="display: flex; flex-direction: column; gap: 18px; text-align: left;">
+            <div id="login-error" style="display: none; color: #dc2626; font-size: 13px; text-align: center; padding: 12px 14px; background: #fef2f2; border-radius: 10px; border: 1px solid #fecaca; animation: shake 0.4s ease-in-out;"></div>
+            
+            <div class="input-group">
+                <label class="auth-label" data-i18n="auth.email">Email Address</label>
+                <div style="position: relative;">
+                    <i class="fas fa-envelope" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted, #9ca3af); font-size: 14px;"></i>
+                    <input type="email" id="login-email" required placeholder="farmer@example.com" class="auth-input" style="padding-left: 42px;" autocomplete="email">
+                </div>
+            </div>
+            
+            <div class="input-group">
+                <label class="auth-label" data-i18n="auth.password">Password</label>
+                <div style="position: relative;">
+                    <i class="fas fa-lock" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted, #9ca3af); font-size: 14px;"></i>
+                    <input type="password" id="login-password" required placeholder="••••••••" class="auth-input" style="padding-left: 42px; padding-right: 42px;" autocomplete="current-password">
+                    <i class="fas fa-eye" id="toggle-pwd" style="position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted, #9ca3af); cursor: pointer; transition: color 0.2s;" title="Toggle Password"></i>
+                </div>
+            </div>
+
+            <button type="submit" id="login-btn" class="auth-btn" style="width: 100%; margin-top: 8px;">
+                <i class="fas fa-sign-in-alt"></i> <span data-i18n="auth.loginBtn">Login to AgroVerse</span>
+            </button>
+        </form>
+
+        <p style="margin-top: 28px; font-size: 14px; color: var(--text-muted, #6b7280);">
+            <span data-i18n="auth.newFarmer">New farmer?</span> 
+            <a href="#register" style="color: var(--brand-leaf-500, #16a34a); text-decoration: none; font-weight: 700; transition: color 0.2s; margin-left: 4px;" data-i18n="auth.registerHere">Register here</a>
+        </p>
+    </div>
+</div>
+
+<style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+    .auth-label { font-size: 13px; font-weight: 600; display: block; margin-bottom: 6px; color: var(--text-primary, #111827); }
+    .auth-input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border-subtle, #e2e8f0); border-radius: 10px; font-size: 14px; outline: none; transition: all 0.2s; background: var(--bg-surface-soft, #f8fafc); box-sizing: border-box; color: var(--text-primary, #111827); }
+    .auth-input:focus { border-color: var(--brand-leaf-500, #16a34a); background: var(--bg-surface, #ffffff); box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15); }
+    .auth-btn { background: linear-gradient(135deg, var(--brand-leaf-500, #16a34a) 0%, var(--brand-leaf-600, #15803d) 100%); color: white; border: none; padding: 14px; border-radius: 10px; font-weight: 700; font-size: 15px; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.25); display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .auth-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(22, 163, 74, 0.35); filter: brightness(1.03); }
+    .auth-btn:active { transform: translateY(0); }
+    .auth-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+</style>

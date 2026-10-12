@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroVerse - Marketplace</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="marketplace.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <div class="logo-wrapper">
+                    <img src="assets/favicon.png" alt="AgroVerse Logo">
+                    <h1>AgroVerse</h1>
+                </div>
+                <p>Smart Farming, Better Future</p>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-item" data-route="index.html">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </div>
+                <div class="nav-item" data-route="dashboard.html">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item" data-route="crop.html">
+                    <i class="fas fa-leaf"></i>
+                    <span>Crop Detection</span>
+                </div>
+                <div class="nav-item" data-route="schemes.html">
+                    <i class="fas fa-file-invoice"></i>
+                    <span>Govt Schemes</span>
+                </div>
+                <div class="nav-item" data-route="community.html">
+                    <i class="fas fa-users"></i>
+                    <span>Community</span>
+                </div>
+                <div class="nav-item" data-route="marketplace.html">
+                    <i class="fas fa-tractor"></i>
+                    <span>Marketplace</span>
+                </div>
+                <div class="nav-item" data-route="profile.html">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer-card">
+                <img src="assets/farmer.png" alt="Farmer Illustration">
+                <h4>Hello, Farmer!</h4>
+                <p>Let's grow together and build a better tomorrow.</p>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Header Section -->
+            <header class="page-header">
+                <div class="header-left">
+                    <h2>Marketplace</h2>
+                    <p>Buy or sell new and used farming equipment easily</p>
+                </div>
+                <button class="list-btn"><i class="fas fa-plus"></i> List Your Equipment</button>
+            </header>
+
+            <!-- Search + Filter Bar -->
+            <section class="marketplace-tools">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search equipment (e.g., tractor, plow...)">
+                </div>
+                <div class="filter-dropdowns">
+                    <div class="tool-dropdown">Category <i class="fas fa-chevron-down"></i></div>
+                    <div class="tool-dropdown">Condition <i class="fas fa-chevron-down"></i></div>
+                    <div class="tool-dropdown">Location <i class="fas fa-chevron-down"></i></div>
+                    <div class="tool-dropdown">Sort By <i class="fas fa-chevron-down"></i></div>
+                </div>
+            </section>
+
+            <!-- Category Filter Chips -->
+            <nav class="category-chips">
+                <button class="chip active">All</button>
+                <button class="chip">Tractors</button>
+                <button class="chip">Implements</button>
+                <button class="chip">Irrigation</button>
+                <button class="chip">Harvesting</button>
+                <button class="chip">Planting</button>
+                <button class="chip">Others</button>
+            </nav>
+
+            <!-- Featured Listings Grid -->
+            <section class="products-grid">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1594488311394-49a04a3777d1?q=80&w=400&auto=format&fit=crop" alt="John Deere Tractor">
+                        <span class="featured-badge">Featured</span>
+                        <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div class="product-body">
+                        <h3>John Deere 5050E</h3>
+                        <div class="product-meta">
+                            <span>2021</span>
+                            <span>850 Hours</span>
+                            <span>Like New</span>
+                        </div>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Nashik, MH</p>
+                    </div>
+                    <div class="product-footer">
+                        <p class="price">₹7,50,000</p>
+                        <button class="view-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=400&auto=format&fit=crop" alt="Plow">
+                        <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div class="product-body">
+                        <h3>2-Bottom MB Plough</h3>
+                        <div class="product-meta">
+                            <span>2022</span>
+                            <span>120 Hours</span>
+                            <span>Excellent</span>
+                        </div>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Pune, MH</p>
+                    </div>
+                    <div class="product-footer">
+                        <p class="price">₹45,000</p>
+                        <button class="view-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1594911771120-7f2824388151?q=80&w=400&auto=format&fit=crop" alt="Sprayer">
+                        <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div class="product-body">
+                        <h3>Power Sprayer 16L</h3>
+                        <div class="product-meta">
+                            <span>2023</span>
+                            <span>New</span>
+                        </div>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Nagpur, MH</p>
+                    </div>
+                    <div class="product-footer">
+                        <p class="price">₹6,200</p>
+                        <button class="view-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card">
+                    <div class="product-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=400&auto=format&fit=crop" alt="Harvester">
+                        <span class="featured-badge">Featured</span>
+                        <div class="wishlist-icon"><i class="far fa-heart"></i></div>
+                    </div>
+                    <div class="product-body">
+                        <h3>Mahindra Arjun Nova</h3>
+                        <div class="product-meta">
+                            <span>2019</span>
+                            <span>1500 Hours</span>
+                            <span>Good</span>
+                        </div>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> Jalgaon, MH</p>
+                    </div>
+                    <div class="product-footer">
+                        <p class="price">₹5,80,000</p>
+                        <button class="view-btn">View Details</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Listings -->
+            <section class="recent-listings-section">
+                <h2 class="section-title">Recent Listings</h2>
+                <div class="recent-scroll-grid">
+                    <div class="recent-card-small">
+                        <img src="https://images.unsplash.com/photo-1589923188900-85dae523342b?q=80&w=150&auto=format&fit=crop" alt="Seed Drill">
+                        <div class="recent-info">
+                            <h4>Automatic Seed Drill</h4>
+                            <p class="recent-price">₹85,000</p>
+                        </div>
+                    </div>
+                    <div class="recent-card-small">
+                        <img src="https://images.unsplash.com/photo-1594911771120-7f2824388151?q=80&w=150&auto=format&fit=crop" alt="Tools">
+                        <div class="recent-info">
+                            <h4>Irrigation Kit (Small)</h4>
+                            <p class="recent-price">₹12,400</p>
+                        </div>
+                    </div>
+                    <div class="recent-card-small">
+                        <img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?q=80&w=150&auto=format&fit=crop" alt="Trailer">
+                        <div class="recent-info">
+                            <h4>Heavy Duty Trailer</h4>
+                            <p class="recent-price">₹1,10,000</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Right Panel -->
+        <aside class="right-panel">
+            
+            <!-- My Listings -->
+            <div class="panel-card-info">
+                <h3 class="panel-title">My Listings</h3>
+                <div class="my-listings-stats">
+                    <div class="listing-stat">
+                        <span>Active Listings</span>
+                        <strong>2</strong>
+                    </div>
+                    <div class="listing-stat">
+                        <span>Sold Items</span>
+                        <strong>5</strong>
+                    </div>
+                </div>
+                <button class="manage-btn">Manage Listings</button>
+            </div>
+
+            <!-- Popular Searches -->
+            <div class="panel-card-info">
+                <h3 class="panel-title">Popular Searches</h3>
+                <div class="search-tags">
+                    <span class="tag">Tractor</span>
+                    <span class="tag">Rotavator</span>
+                    <span class="tag">Plough</span>
+                    <span class="tag">Trailer</span>
+                    <span class="tag">Seed Drill</span>
+                    <span class="tag">Sprayer</span>
+                </div>
+            </div>
+
+            <!-- Safe Marketplace -->
+            <div class="panel-card-info">
+                <h3 class="panel-title">Safe Marketplace</h3>
+                <div class="safe-list">
+                    <div class="safe-item">
+                        <i class="fas fa-user-shield"></i>
+                        <span>Verified users only</span>
+                    </div>
+                    <div class="safe-item">
+                        <i class="fas fa-lock"></i>
+                        <span>Secure payments</span>
+                    </div>
+                    <div class="safe-item">
+                        <i class="fas fa-award"></i>
+                        <span>Quality assurance</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buyer Tips -->
+            <div class="panel-card-info">
+                <h3 class="panel-title">Buyer Tips</h3>
+                <ul class="tips-list">
+                    <li>Always check equipment hours.</li>
+                    <li>Inspect for rust or leaks.</li>
+                    <li>Verify ownership documents.</li>
+                    <li>Test drive before payment.</li>
+                </ul>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <script src="navigation.js"></script>
+    <script type="module" src="js/marketplace.js"></script>
+    <script type="module" src="js/chatbot.js"></script>`n</body>
+</html>
+

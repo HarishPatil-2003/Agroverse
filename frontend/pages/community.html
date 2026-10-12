@@ -1,0 +1,176 @@
+<div class="community-container">
+    <!-- Main Community Card -->
+    <div class="community-main-card">
+        <div class="card-header-flex">
+            <div class="header-info">
+                <div class="header-icon"><i class="fas fa-users"></i></div>
+                <div class="header-text">
+                    <h2 data-i18n="community.title">Community</h2>
+                    <p data-i18n="community.subtitle">Connect, share and learn with fellow farmers.</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="trigger-composer-btn" class="create-post-trigger">
+                    <i class="fas fa-plus"></i> <span data-i18n="community.createPost">Create Post</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="community-tabs">
+            <a class="tab-link active" data-tab="all" data-i18n="community.allPosts">All Posts</a>
+            <a class="tab-link" data-tab="questions" data-i18n="community.questions">Questions</a>
+            <a class="tab-link" data-tab="videos" data-i18n="community.videos">Videos</a>
+            <a class="tab-link" data-tab="images" data-i18n="community.images">Images</a>
+            <a class="tab-link" data-tab="reviews" data-i18n="community.reviews">Reviews</a>
+        </nav>
+
+        <!-- Post Composer -->
+        <div class="post-composer-card">
+            <div class="composer-top">
+                <img src="https://ui-avatars.com/api/?name=User&background=16a34a&color=fff" alt="User" class="composer-avatar user-avatar-dynamic">
+                <textarea id="community-post-input" class="composer-textarea" rows="2" data-i18n-placeholder="community.sharePlaceholder" placeholder="Share something with the community..."></textarea>
+            </div>
+            <div class="composer-actions">
+                <div class="attachment-group">
+                    <button class="attach-btn-modern"><i class="far fa-image"></i> <span data-i18n="community.images">Image</span></button>
+                    <button class="attach-btn-modern"><i class="fas fa-video"></i> <span data-i18n="community.videos">Video</span></button>
+                    <button class="attach-btn-modern"><i class="fas fa-poll-h"></i> <span data-i18n="community.questions">Poll</span></button>
+                </div>
+                <button id="community-post-submit" class="post-btn-modern">
+                    <span data-i18n="community.post">Post</span> <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Feed Controls -->
+        <div class="feed-controls">
+            <div class="feed-title" data-i18n="community.feedTitle">Recent Activity</div>
+            <div class="controls-right">
+                <select id="sort-posts" class="filter-select">
+                    <option value="latest">Latest</option>
+                    <option value="popular">Popular</option>
+                </select>
+                <select id="filter-category" class="filter-select">
+                    <option value="all">All Categories</option>
+                    <option value="farming">Farming</option>
+                    <option value="market">Market</option>
+                    <option value="weather">Weather</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Post Feed -->
+        <div class="post-feed" id="community-post-feed">
+            <!-- Loading State -->
+            <div class="loading-state-modern" style="text-align: center; padding: 50px;">
+                <i class="fas fa-circle-notch fa-spin" style="font-size: 30px; color: var(--primary-green);"></i>
+                <p style="margin-top: 15px; color: var(--text-muted);">Loading community posts...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Right Sidebar Content Template -->
+<div id="community-right-sidebar-content" style="display: none;">
+    <!-- Online Farmers -->
+    <div class="community-info-card">
+        <div class="info-card-header">
+            <h4>Online Farmers</h4>
+            <a href="#" class="view-all-link">See all</a>
+        </div>
+        <div class="online-farmers-list">
+            <div class="farmer-item">
+                <div class="farmer-left">
+                    <div class="farmer-avatar-wrap">
+                        <img src="https://ui-avatars.com/api/?name=Suresh+Patil" class="f-avatar">
+                        <span class="status-dot"></span>
+                    </div>
+                    <div>
+                        <span class="f-name">Suresh Patil</span>
+                        <span class="f-loc">Nashik, MH</span>
+                    </div>
+                </div>
+                <button class="call-btn-small"><i class="fas fa-phone-alt"></i></button>
+            </div>
+            <div class="farmer-item">
+                <div class="farmer-left">
+                    <div class="farmer-avatar-wrap">
+                        <img src="https://ui-avatars.com/api/?name=Amol+Deshmukh" class="f-avatar">
+                        <span class="status-dot"></span>
+                    </div>
+                    <div>
+                        <span class="f-name">Amol Deshmukh</span>
+                        <span class="f-loc">Pune, MH</span>
+                    </div>
+                </div>
+                <button class="call-btn-small"><i class="fas fa-phone-alt"></i></button>
+            </div>
+            <div class="farmer-item">
+                <div class="farmer-left">
+                    <div class="farmer-avatar-wrap">
+                        <img src="https://ui-avatars.com/api/?name=Ramesh+Kumar" class="f-avatar">
+                        <span class="status-dot"></span>
+                    </div>
+                    <div>
+                        <span class="f-name">Ramesh Kumar</span>
+                        <span class="f-loc">Sangli, MH</span>
+                    </div>
+                </div>
+                <button class="call-btn-small"><i class="fas fa-phone-alt"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trending Topics -->
+    <div class="community-info-card">
+        <div class="info-card-header">
+            <h4>Trending Topics</h4>
+            <a href="#" class="view-all-link">View all</a>
+        </div>
+        <div class="trending-topics-list">
+            <div class="topic-row">
+                <span class="topic-name">Drip Irrigation Benefits</span>
+                <span class="topic-count">1.2k posts</span>
+            </div>
+            <div class="topic-row">
+                <span class="topic-name">Organic Farming Tips</span>
+                <span class="topic-count">850 posts</span>
+            </div>
+            <div class="topic-row">
+                <span class="topic-name">Pest Control Solutions</span>
+                <span class="topic-count">640 posts</span>
+            </div>
+            <div class="topic-row">
+                <span class="topic-name">Soil Health Management</span>
+                <span class="topic-count">520 posts</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Contributors -->
+    <div class="community-info-card">
+        <div class="info-card-header">
+            <h4>Top Contributors</h4>
+            <span style="font-size: 11px; font-weight: 700; color: var(--text-muted);">This Month</span>
+        </div>
+        <div class="contributors-list">
+            <div class="contributor-row">
+                <div class="farmer-left">
+                    <img src="https://ui-avatars.com/api/?name=Vijay+Thorat" class="f-avatar">
+                    <span class="f-name">Vijay Thorat</span>
+                </div>
+                <span class="c-points">2.4k pts</span>
+            </div>
+            <div class="contributor-row">
+                <div class="farmer-left">
+                    <img src="https://ui-avatars.com/api/?name=Rahul+Shinde" class="f-avatar">
+                    <span class="f-name">Rahul Shinde</span>
+                </div>
+                <span class="c-points">1.8k pts</span>
+            </div>
+        </div>
+        <a href="#" class="view-all-link" style="display: block; text-align: center; margin-top: 10px;">View Leaderboard</a>
+    </div>
+</div>
+

@@ -1,0 +1,131 @@
+/**
+ * AgroVerse Base Foundations & Typography (Phase 3)
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-family-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background-color: var(--bg-app);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+/* ── Typography Hierarchy ── */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: var(--font-bold);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: var(--text-3xl); font-weight: var(--font-extrabold); }
+h2 { font-size: var(--text-2xl); font-weight: var(--font-bold); }
+h3 { font-size: var(--text-xl); font-weight: var(--font-bold); }
+h4 { font-size: var(--text-lg); font-weight: var(--font-semibold); }
+h5 { font-size: var(--text-md); font-weight: var(--font-semibold); }
+h6 { font-size: var(--text-base); font-weight: var(--font-semibold); }
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.subtitle {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* ── Accessible Focus States ── */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--brand-emerald-500);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.18);
+}
+
+/* ── Links & Interactive Elements ── */
+a {
+  color: var(--brand-emerald-500);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--brand-emerald-600);
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* ── Refined Custom Scrollbar ── */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-subtle);
+}
+
+/* ── Selection ── */
+::selection {
+  background: var(--brand-emerald-100);
+  color: var(--brand-forest-900);
+}
+
+[data-theme="dark"] ::selection,
+body.dark-theme ::selection {
+  background: var(--brand-forest-700);
+  color: #ffffff;
+}

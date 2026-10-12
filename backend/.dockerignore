@@ -1,0 +1,10 @@
+target/
+*.log
+startup_log.txt
+.env
+.env.local
+.git/
+.vscode/
+.idea/
+uploads/*
+!uploads/.gitkeep

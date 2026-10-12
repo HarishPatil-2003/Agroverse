@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroVerse - Smart Farming</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <!-- Design System Foundation -->
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- Feature Stylesheets -->
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="community.css">
+    <link rel="stylesheet" href="marketplace.css">
+    <link rel="stylesheet" href="crop-detection.css">
+    <link rel="stylesheet" href="govt-schemes.css">
+    <link rel="stylesheet" href="profile.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts Preconnect for Premium Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="app-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar app-sidebar">
+        <div class="logo-section" id="app-logo-refresh" style="cursor: pointer;">
+            <div class="logo-wrapper">
+                <img src="assets/favicon.png" alt="AgroVerse Logo">
+                <h1 data-i18n="app.name">AgroVerse</h1>
+            </div>
+            <p data-i18n="app.tagline">Smart Farming, Better Future</p>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="#home" class="nav-link" data-route="home">
+                <i class="fas fa-home"></i>
+                <span data-i18n="nav.home">Home</span>
+            </a>
+            <a href="#crop" class="nav-link" data-route="crop">
+                <i class="fas fa-leaf"></i>
+                <span data-i18n="nav.cropDetection">Crop Detection</span>
+            </a>
+            <a href="#schemes" class="nav-link" data-route="schemes">
+                <i class="fas fa-file-invoice"></i>
+                <span data-i18n="nav.govtSchemes">Govt Schemes</span>
+            </a>
+            <a href="#community" class="nav-link" data-route="community">
+                <i class="fas fa-users"></i>
+                <span data-i18n="nav.community">Community</span>
+            </a>
+            <a href="#marketplace" class="nav-link" data-route="marketplace">
+                <i class="fas fa-store"></i>
+                <span data-i18n="nav.marketplace">Marketplace</span>
+            </a>
+            <a href="#profile" class="nav-link" data-route="profile">
+                <i class="fas fa-user-circle"></i>
+                <span data-i18n="nav.profile">Profile</span>
+            </a>
+
+            <div class="nav-item" id="logout-btn" style="margin-top: auto; color: #ef4444; cursor: pointer; opacity: 0.8;">
+                <i class="fas fa-sign-out-alt"></i>
+                <span data-i18n="nav.logout">Logout</span>
+            </div>
+        </nav>
+
+        <div class="sidebar-footer-card">
+            <div class="avatar-circle-wrapper" id="sidebar-avatar-wrapper">
+                <img id="sidebar-footer-img" src="assets/farmer.png" alt="Farmer" style="display: none;">
+                <span id="sidebar-footer-initials" class="initials-placeholder" data-user-initials>FA</span>
+            </div>
+            <div class="footer-card-text">
+                <h4 id="sidebar-user-greeting" data-i18n="app.helloFarmer" data-greeting-name>Hello, Farmer!</h4>
+                <p id="sidebar-user-id-footer" data-farmer-id>Farmer ID: #----</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-area">
+        <header class="top-header">
+            <div class="header-left">
+                <i class="fas fa-bars" id="sidebar-toggle" title="Toggle Sidebar"></i>
+                <div class="welcome-text-container">
+                    <span class="welcome-small" id="header-welcome-small" data-i18n="common.welcomeBack">Welcome back</span>
+                    <h2 id="pageTitle">Farmer 🌱</h2>
+                    <p id="pageSubtitle" class="subtitle" data-i18n="home.subtitle">Good morning! Let's make your farm more productive today.</p>
+                </div>
+            </div>
+
+            <div class="header-right">
+                <!-- Language Selector -->
+                <div class="header-lang-wrapper">
+                    <i class="fas fa-globe"></i>
+                    <select id="languageSelect" aria-label="Select Language">
+                        <option value="en">English</option>
+                        <option value="hi">हिंदी</option>
+                        <option value="mr">मराठी</option>
+                    </select>
+                </div>
+
+                <!-- Theme Toggle -->
+                <button id="themeToggleBtn" type="button" aria-label="Toggle Theme" title="Toggle Theme" class="icon-btn">
+                    <i class="fas fa-moon" id="themeToggleIcon"></i>
+                </button>
+
+                <!-- Notifications -->
+                <div class="icon-btn" title="Notifications">
+                    <i class="far fa-bell"></i>
+                    <span class="badge">3</span>
+                </div>
+
+                <!-- User Meta / Profile Trigger -->
+                <div class="user-meta" id="header-profile-trigger">
+                    <div class="header-avatar">
+                        <img src="" id="headerAvatarImg" data-user-avatar-img alt="User" style="display: none;">
+                        <span id="headerAvatarInitials" data-user-initials>FA</span>
+                    </div>
+                    <div class="text-info">
+                        <span class="name" id="headerUserName" data-user-name>Farmer</span>
+                        <span class="id" id="headerUserEmail" data-farmer-id>Farmer ID: #---- <i class="fas fa-chevron-down"></i></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Layout Wrapper (Dynamic Content + Right Panel) -->
+        <div class="page-layout-wrapper">
+            
+            <!-- Dynamic Content -->
+            <div id="page-root" class="page-root">
+                <!-- Page Partials load here -->
+            </div>
+
+            <!-- Global Right Side Panel -->
+            <aside class="right-panel">
+                <div id="live-weather-card" class="panel-card-info weather-card">
+                    <div class="weather-header">
+                        <i class="fas fa-cloud-sun"></i>
+                        <span data-i18n="home.liveWeather">Live Weather</span>
+                    </div>
+                    <div id="weather-container">
+                        <!-- JS injects here -->
+                        <div class="loading-container" style="height: 100px;">
+                            <i class="fas fa-circle-notch fa-spin"></i>
+                            <p>Fetching weather...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-card-info tip-card">
+                    <div class="tip-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <span data-i18n="home.farmingTip">Farming Tip of the Day</span>
+                    </div>
+                    <p id="farming-tip-text">Use crop rotation to maintain soil fertility and reduce pest infestation naturally.</p>
+                    <a href="#" class="green-link" style="font-size: 13px; font-weight: 600; color: #22c55e;">Read more tips &rarr;</a>
+                    <div class="tip-image-wrapper" style="margin-top: 15px;">
+                        <img src="assets/tip.png" alt="Tip" style="height: 100px; object-fit: contain; background: transparent;">
+                    </div>
+                </div>
+
+                <div class="panel-card-info announcement-card">
+                    <div class="tip-header">
+                        <i class="fas fa-bullhorn"></i>
+                        <span data-i18n="home.announcements">Latest Announcements</span>
+                    </div>
+                    <div class="ann-list" style="margin-top: 14px; display: flex; flex-direction: column; gap: 12px;">
+                        <div class="ann-item">
+                            <div class="ann-icon green"><i class="fas fa-landmark"></i></div>
+                            <div class="ann-content">
+                                <h4>PM Kisan Yojana 17th Installment Released</h4>
+                                <span class="ann-date">May 4, 2026</span>
+                            </div>
+                        </div>
+                        <div class="ann-item">
+                            <div class="ann-icon orange"><i class="fas fa-droplet"></i></div>
+                            <div class="ann-content">
+                                <h4>Apply for Drip Irrigation Subsidy Scheme</h4>
+                                <span class="ann-date">May 2, 2026</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#schemes" class="btn-link" style="margin-top: 14px;">View all announcements &rarr;</a>
+                </div>
+            </aside>
+
+        </div><!-- /.page-layout-wrapper -->
+    </main>
+</div>
+
+<!-- i18n Library -->
+<script src="https://cdn.jsdelivr.net/npm/i18next@23.2.3/i18next.min.js"></script>
+
+<!-- Scripts -->
+<script src="js/env.js"></script>
+<script src="js/config.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/supabase.js"></script>
+<script type="module" src="js/api.js"></script>
+<script type="module" src="js/i18n.js"></script>
+<script type="module" src="js/language.js"></script>
+<script type="module" src="js/home.js"></script>
+<script type="module" src="js/cropDetection.js"></script>
+<script type="module" src="js/schemes.js"></script>
+<script type="module" src="js/community.js"></script>
+<script type="module" src="js/marketplace.js"></script>
+<script type="module" src="js/profile.js"></script>
+<script type="module" src="js/router.js"></script>
+<script type="module" src="js/chatbot.js"></script>
+
+<script type="module">
+    import { auth, getInitials } from './js/auth.js';
+    import { initWeatherWidget } from './js/weather.js';
+
+    window.refreshUserIdentityUI = async function() {
+        console.log("[UI] Refreshing user identity...");
+        const user = await auth.getSession();
+        
+        if (!user) {
+            console.warn("[UI] No active session, resetting to guest.");
+            window.resetUserIdentityUI();
+            return;
+        }
+
+        const profile = auth.farmerProfile || user;
+        const displayName = profile.full_name || profile.fullName || user.email?.split('@')[0] || "Farmer";
+        const firstName = displayName.split(' ')[0];
+        const farmerId = profile.farmer_code || profile.farmerId || "----";
+        const initials = getInitials(displayName);
+        const avatarUrl = profile.profile_image_url || profile.profileImageUrl;
+
+        // 1. Update Names
+        document.querySelectorAll("[data-user-name], #headerUserName").forEach(el => el.textContent = displayName);
+        document.querySelectorAll("[data-greeting-name], #sidebar-user-greeting").forEach(el => {
+            el.textContent = `Hello, ${firstName}!`;
+        });
+
+        // 2. Update Welcome Title (Page Specific)
+        const welcomeTitle = document.getElementById('pageTitle');
+        const welcomeSmall = document.getElementById('header-welcome-small');
+        if (welcomeTitle && window.location.hash.includes('home')) {
+            const isNewUser = localStorage.getItem('agroverse_new_user') === 'true';
+            if (welcomeSmall) welcomeSmall.textContent = isNewUser ? 'Welcome' : 'Welcome back';
+            welcomeTitle.textContent = `${firstName} 🌱`;
+            if (isNewUser) localStorage.removeItem('agroverse_new_user');
+        }
+
+        // 3. Update Farmer IDs
+        document.querySelectorAll("[data-farmer-id], #sidebar-user-id-footer").forEach(el => {
+            el.textContent = `Farmer ID: #${farmerId}`;
+        });
+
+        // 4. Update Avatar (Image + Initials)
+        const updateAvatar = (imgId, initialsId, url, initials) => {
+            const img = document.getElementById(imgId);
+            const init = document.getElementById(initialsId);
+            if (url) {
+                if (img) { img.src = url; img.style.display = 'block'; }
+                if (init) { init.style.display = 'none'; }
+            } else {
+                if (img) { img.style.display = 'none'; }
+                if (init) { init.textContent = initials; init.style.display = 'flex'; }
+            }
+        };
+
+        updateAvatar('headerAvatarImg', 'headerAvatarInitials', avatarUrl, initials);
+        updateAvatar('sidebar-footer-img', 'sidebar-footer-initials', avatarUrl, initials);
+        
+        console.log("[UI] User identity refreshed for:", displayName);
+    };
+
+    window.resetUserIdentityUI = function() {
+        console.log("[UI] Resetting user identity to guest...");
+        document.querySelectorAll("[data-user-name], #headerUserName").forEach(el => el.textContent = "Guest");
+        document.querySelectorAll("[data-user-initials], #headerAvatarInitials, #sidebar-footer-initials").forEach(el => {
+            el.textContent = "GU";
+            el.style.display = "flex";
+        });
+        document.querySelectorAll("[data-farmer-id], #sidebar-user-id-footer").forEach(el => el.textContent = "Farmer ID: N/A");
+        document.querySelectorAll("[data-user-avatar-img], #headerAvatarImg, #sidebar-footer-img").forEach(el => el.style.display = "none");
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        // Init Weather in Sidebar
+        if (typeof initWeatherWidget === 'function') {
+            initWeatherWidget('.weather-widget-inner');
+        }
+
+        // Theme Switcher Interaction
+        const themeBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = document.getElementById('themeToggleIcon');
+        const updateThemeIcon = (th) => {
+            if (!themeIcon) return;
+            themeIcon.className = th === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        };
+        const currentTheme = localStorage.getItem('agroverse_theme') || 'light';
+        updateThemeIcon(currentTheme);
+
+        themeBtn?.addEventListener('click', () => {
+            const nextTheme = localStorage.getItem('agroverse_theme') === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', nextTheme);
+            document.body.classList.remove('light-theme', 'dark-theme');
+            document.body.classList.add(`${nextTheme}-theme`);
+            localStorage.setItem('agroverse_theme', nextTheme);
+            updateThemeIcon(nextTheme);
+        });
+
+        // Sidebar Toggle Interaction
+        document.getElementById('sidebar-toggle')?.addEventListener('click', () => {
+            const sidebar = document.querySelector('.app-sidebar');
+            if (window.innerWidth <= 768) {
+                sidebar?.classList.toggle('mobile-open');
+            } else {
+                document.body.classList.toggle('sidebar-collapsed');
+            }
+        });
+
+        // Handle Logout
+        document.getElementById('logout-btn')?.addEventListener('click', async () => {
+            if(confirm('Are you sure you want to logout?')) {
+                await auth.logoutFarmer();
+            }
+        });
+
+        // Logo Refresh
+        document.getElementById('app-logo-refresh')?.addEventListener('click', () => {
+            window.location.hash = 'home';
+            window.location.reload();
+        });
+
+        // Trigger Profile Page
+        document.getElementById('header-profile-trigger')?.addEventListener('click', () => {
+            window.location.hash = 'profile';
+        });
+
+        await window.refreshUserIdentityUI();
+    });
+
+    window.addEventListener('hashchange', () => {
+        window.refreshUserIdentityUI();
+    });
+</script>
+
+</body>
+</html>

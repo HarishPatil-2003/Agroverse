@@ -1,0 +1,127 @@
+name: AgroVerse CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  backend-verification:
+    name: Backend Build & Test (Spring Boot 3.2 + Java 17)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17 (Eclipse Temurin)
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Compile and Run Automated Tests
+        working-directory: ./backend
+        run: |
+          mvn clean test "-Dspring.flyway.enabled=true" -B
+
+      - name: Package Production Fat JAR
+        working-directory: ./backend
+        run: |
+          mvn package -DskipTests=true -B
+          test -f target/backend-1.0.0.jar || (echo "Fat JAR missing!" && exit 1)
+          echo "Fat JAR successfully generated."
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: agroverse-backend-jar
+          path: backend/target/backend-1.0.0.jar
+          retention-days: 7
+
+  frontend-verification:
+    name: Frontend Lint & Asset Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Syntax Check JavaScript Modules
+        working-directory: ./frontend
+        run: |
+          node -c js/config.js
+          node -c js/env.js
+          node -c js/api.js
+          node -c js/auth.js
+          node -c js/router.js
+          node -c js/cropDetection.js
+          node -c js/community.js
+          node -c js/marketplace.js
+          node -c js/schemes.js
+          node -c js/weather.js
+          node -c js/home.js
+          node -c js/profile.js
+          echo "All JavaScript modules passed syntax validation."
+
+      - name: Validate Critical HTML & Pages
+        working-directory: ./frontend
+        run: |
+          test -f index.html || exit 1
+          test -f pages/home.html || exit 1
+          test -f pages/crop.html || exit 1
+          test -f pages/schemes.html || exit 1
+          test -f pages/community.html || exit 1
+          test -f pages/marketplace.html || exit 1
+          test -f pages/profile.html || exit 1
+          test -f pages/login.html || exit 1
+          test -f pages/register.html || exit 1
+          test -f vercel.json || exit 1
+          echo "All critical frontend entry points and routing partials verified."
+
+  docker-build-check:
+    name: Docker Container Build Verification
+    runs-on: ubuntu-latest
+    needs: [backend-verification]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Backend Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend
+          file: ./backend/Dockerfile
+          push: false
+          tags: agroverse-backend:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  security-audit:
+    name: Production Security & Secret Leak Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Scan for Uncommitted / Leaked Private Keys
+        run: |
+          # Ensure no real private keys or active secrets were committed
+          if grep -rn "BEGIN RSA PRIVATE KEY" .; then
+            echo "Private key detected in repo!"
+            exit 1
+          fi
+          echo "Secret check passed."

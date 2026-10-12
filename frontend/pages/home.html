@@ -1,0 +1,86 @@
+<section class="stats-row">
+    <div class="stat-card">
+        <div class="stat-icon icon-green">
+            <i class="fas fa-seedling"></i>
+        </div>
+        <div class="stat-info">
+            <h3 id="stat-active-crops">--</h3>
+            <p data-i18n="home.activeCrops">Active Crops</p>
+            <a href="#crop">Manage Crops</a>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon icon-orange">
+            <i class="fas fa-tractor"></i>
+        </div>
+        <div class="stat-info">
+            <h3 id="stat-active-listings">--</h3>
+            <p data-i18n="home.activeListings">Active Listings</p>
+            <a href="#marketplace">Go to Shop</a>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon icon-blue">
+            <i class="fas fa-bell"></i>
+        </div>
+        <div class="stat-info">
+            <h3 id="stat-notifications">--</h3>
+            <p data-i18n="home.newNotifications">New Notifications</p>
+            <a href="#profile" data-i18n="common.viewAll">View All</a>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon icon-purple">
+            <i class="far fa-calendar-check"></i>
+        </div>
+        <div class="stat-info">
+            <h3 id="stat-tasks">--</h3>
+            <p data-i18n="home.tasksForToday">Tasks for Today</p>
+            <a href="#tasks">Open Planner</a>
+        </div>
+    </div>
+</section>
+
+<section class="sections-grid">
+    <div class="card-panel">
+        <div class="panel-header">
+            <h3 data-i18n="home.myCrops">My Crops</h3>
+            <a href="#crop" class="btn-link" data-i18n="common.viewAll">View All</a>
+        </div>
+        <div class="crops-list" id="home-crops-list">
+            <div class="loading-container" style="height: 100px;">
+                <i class="fas fa-circle-notch fa-spin" style="font-size: 24px;"></i>
+            </div>
+        </div>
+    </div>
+    <div class="card-panel">
+        <div class="panel-header">
+            <h3 data-i18n="home.todaysTasks">Today's Tasks</h3>
+            <a href="#tasks" class="btn-link">Planner</a>
+        </div>
+        <div class="tasks-list" id="home-tasks-list">
+            <div class="loading-container" style="height: 100px;">
+                <i class="fas fa-circle-notch fa-spin" style="font-size: 24px;"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="lower-grid">
+    <div class="card-panel community-card" id="home-community-card">
+        <div class="panel-header">
+            <h3 data-i18n="home.communitySnapshot">Community Snapshot</h3>
+        </div>
+        <div class="loading-container" style="height: 100px;">
+            <i class="fas fa-circle-notch fa-spin" style="font-size: 24px;"></i>
+        </div>
+    </div>
+    <div class="card-panel" id="home-marketplace-card">
+        <div class="panel-header">
+            <h3 data-i18n="home.marketplaceSummary">Marketplace Summary</h3>
+        </div>
+        <div class="loading-container" style="height: 100px;">
+            <i class="fas fa-circle-notch fa-spin" style="font-size: 24px;"></i>
+        </div>
+    </div>
+</section>

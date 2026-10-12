@@ -1,0 +1,189 @@
+<div class="schemes-container">
+    <!-- Main Govt Schemes Card -->
+    <div class="schemes-main-card">
+        <div class="card-header-flex">
+            <div class="header-info">
+                <div class="header-icon"><i class="fas fa-building-columns"></i></div>
+                <div class="header-text">
+                    <h2 data-i18n="schemes.title">Govt Schemes</h2>
+                    <p data-i18n="schemes.subtitle">Find and apply for schemes relevant to your farm</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search and Filters -->
+        <div class="schemes-filters-row">
+            <div class="search-bar-modern">
+                <i class="fas fa-search"></i>
+                <input type="text" id="scheme-search" data-i18n-placeholder="schemes.searchPlaceholder" placeholder="Search schemes (e.g., irrigation, subsidy...)">
+            </div>
+            <select id="filter-crop" class="filter-select-modern">
+                <option value="">All Crop Types</option>
+                <option value="Rice">Rice</option>
+                <option value="Wheat">Wheat</option>
+                <option value="Pulses">Pulses</option>
+                <option value="Cotton">Cotton</option>
+                <option value="Sugarcane">Sugarcane</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Vegetables">Vegetables</option>
+                <option value="Organic Crops">Organic Crops</option>
+            </select>
+            <select id="filter-state" class="filter-select-modern">
+                <option value="">All States</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="West Bengal">West Bengal</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+            </select>
+            <select id="filter-category" class="filter-select-modern">
+                <option value="">All Categories</option>
+                <option value="Income Support">Income Support</option>
+                <option value="Crop Insurance">Crop Insurance</option>
+                <option value="Credit & Finance">Credit & Finance</option>
+                <option value="Infrastructure">Infrastructure</option>
+                <option value="Mechanization">Mechanization</option>
+                <option value="Irrigation">Irrigation</option>
+            </select>
+        </div>
+
+        <!-- Schemes List Container -->
+        <div class="schemes-list" id="schemes-container">
+            <!-- Loading State -->
+            <div style="text-align: center; padding: 50px;">
+                <i class="fas fa-circle-notch fa-spin" style="font-size: 30px; color: var(--primary-green);"></i>
+                <p style="margin-top: 15px; color: var(--text-muted);">Loading available schemes...</p>
+            </div>
+        </div>
+
+        <!-- Applied Schemes Section -->
+        <div class="applied-schemes-section">
+            <div class="section-header-flex">
+                <h3 data-i18n="schemes.appliedTitle">Applied Schemes</h3>
+                <a href="#" class="view-all-link" data-i18n="schemes.viewAll">View All</a>
+            </div>
+            <div class="applied-grid" id="applied-schemes-container">
+                <!-- Applied schemes will be rendered here -->
+                <div class="empty-state-modern" style="grid-column: 1 / -1; text-align: center; padding: 20px; color: var(--text-muted);">
+                    <p>No applied schemes yet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scheme Details Modal -->
+<div id="scheme-modal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 1000; justify-content: center; align-items: center; padding: 20px;">
+    <div class="modal-content" style="background: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-primary); width: 100%; max-width: 600px; max-height: 90vh; border-radius: var(--radius-xl); overflow-y: auto; box-shadow: var(--shadow-xl); animation: slideUp 0.3s ease;">
+        <div style="position: relative;">
+            <img id="modal-img" src="" alt="Scheme" style="width: 100%; height: 200px; object-fit: cover; border-top-left-radius: 24px; border-top-right-radius: 24px;">
+            <button id="close-modal" style="position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.5); color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer;"><i class="fas fa-times"></i></button>
+        </div>
+        <div style="padding: 30px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                <h2 id="modal-title" style="font-size: 22px; font-weight: 800; color: var(--text-dark); margin: 0;"></h2>
+                <span id="modal-badge" class="cat-badge subsidy" style="white-space: nowrap; margin-left: 10px;"></span>
+            </div>
+            
+            <p id="modal-desc" style="color: var(--text-muted); font-size: 14.5px; line-height: 1.6; margin-bottom: 25px;"></p>
+            
+            <div style="background: var(--page-bg); padding: 20px; border-radius: 16px; margin-bottom: 20px; border: 1px solid var(--border-color);">
+                <h4 style="font-size: 14px; margin: 0 0 10px 0; color: var(--text-dark); font-weight: 800;"><i class="fas fa-gift" style="color: var(--primary-green); margin-right: 8px;"></i>Benefits</h4>
+                <p id="modal-benefits" style="font-size: 13.5px; color: var(--text-muted); line-height: 1.5; margin: 0;"></p>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <h4 style="font-size: 14px; margin: 0 0 10px 0; color: var(--text-dark); font-weight: 800;"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 8px;"></i>Eligibility</h4>
+                <p id="modal-eligibility" style="font-size: 13.5px; color: var(--text-muted); line-height: 1.5; margin: 0;"></p>
+            </div>
+
+            <div style="margin-bottom: 30px;">
+                <h4 style="font-size: 14px; margin: 0 0 10px 0; color: var(--text-dark); font-weight: 800;"><i class="fas fa-file-alt" style="color: var(--primary-green); margin-right: 8px;"></i>Required Documents</h4>
+                <ul id="modal-docs" style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6; padding-left: 20px; margin: 0;"></ul>
+            </div>
+
+            <button id="modal-apply-btn" class="s-apply-btn" style="width: 100%; padding: 15px; font-size: 14px;">Apply Now <i class="fas fa-external-link-alt" style="margin-left: 8px; font-size: 12px;"></i></button>
+        </div>
+    </div>
+</div>
+
+<!-- Right Sidebar Content Template -->
+<div id="schemes-right-sidebar-content" style="display: none;">
+    <!-- Important Deadlines -->
+    <div class="scheme-info-card">
+        <div class="info-card-header">
+            <h4>Important Deadlines</h4>
+            <i class="far fa-calendar-alt" style="color: var(--primary-green);"></i>
+        </div>
+        <div class="deadline-list">
+            <div class="deadline-item">
+                <div class="date-block">
+                    <span class="day">15</span>
+                    <span class="month">JUN</span>
+                </div>
+                <div class="deadline-info">
+                    <h5>PM Kisan Registration</h5>
+                    <p>Deadline: June 15, 2026</p>
+                </div>
+            </div>
+            <div class="deadline-item">
+                <div class="date-block">
+                    <span class="day">30</span>
+                    <span class="month">JUN</span>
+                </div>
+                <div class="deadline-info">
+                    <h5>KCC Scheme Application</h5>
+                    <p>Deadline: June 30, 2026</p>
+                </div>
+            </div>
+            <div class="deadline-item">
+                <div class="date-block">
+                    <span class="day">10</span>
+                    <span class="month">JUL</span>
+                </div>
+                <div class="deadline-info">
+                    <h5>Fasal Bima Enrollment</h5>
+                    <p>Deadline: July 10, 2026</p>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="view-all-link">View all deadlines</a>
+    </div>
+
+    <!-- Farming Tip of the Day -->
+    <div class="tip-card-green">
+        <h4>Farming Tip of the Day</h4>
+        <p>"Use drip irrigation to save water and improve crop yield significantly. Proper soil testing before sowing can save up to 30% on fertilizer costs."</p>
+        <a href="#" style="display: block; margin-top: 15px; font-size: 12px; font-weight: 800; color: var(--dark-green); text-decoration: none;">Read more tips <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <!-- Latest Announcements -->
+    <div class="scheme-info-card" style="margin-top: 20px;">
+        <div class="info-card-header">
+            <h4>Latest Announcements</h4>
+            <i class="fas fa-bullhorn" style="color: var(--primary-green);"></i>
+        </div>
+        <div class="announcements-list">
+            <div class="announcement-row">
+                <div class="ann-icon"><i class="fas fa-info-circle"></i></div>
+                <div class="ann-text">
+                    <h5>PM Kisan 17th Installment Released</h5>
+                    <span>May 12, 2026</span>
+                </div>
+            </div>
+            <div class="announcement-row">
+                <div class="ann-icon"><i class="fas fa-check-circle"></i></div>
+                <div class="ann-text">
+                    <h5>Apply for Drip Irrigation Subsidy</h5>
+                    <span>May 10, 2026</span>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="view-all-link">View all announcements</a>
+    </div>
+</div>
+

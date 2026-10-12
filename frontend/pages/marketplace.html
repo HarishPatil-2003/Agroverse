@@ -1,0 +1,212 @@
+<div class="marketplace-container">
+    <!-- Main Content Area -->
+    <div class="marketplace-main-card">
+        <div class="card-header-flex">
+            <div class="header-info">
+                <div class="header-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <div class="header-text">
+                    <h2 data-i18n="marketplace.title">Marketplace</h2>
+                    <p data-i18n="marketplace.subtitle">Buy or sell new and used farming equipment easily.</p>
+                </div>
+            </div>
+            <button id="add-product-btn" class="action-btn" style="display: flex; align-items: center; gap: 8px; padding: 12px 20px;">
+                <i class="fas fa-plus"></i> <span data-i18n="marketplace.listEquipment">List Your Equipment</span>
+            </button>
+        </div>
+
+        <!-- Search & Filters Section -->
+        <div class="marketplace-filters-wrapper">
+            <div class="search-row">
+                <div class="search-bar-modern">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="marketplace-search-input" data-i18n-placeholder="marketplace.searchPlaceholder" placeholder="Search equipment (e.g., tractor, plow...)">
+                </div>
+            </div>
+            <div class="filter-row">
+                <select id="filter-category" class="filter-select-modern">
+                    <option value="" data-i18n="marketplace.category">Category</option>
+                    <option value="Tractors">Tractors</option>
+                    <option value="Implements">Implements</option>
+                    <option value="Irrigation">Irrigation</option>
+                    <option value="Harvesting">Harvesting</option>
+                    <option value="Planting">Planting</option>
+                    <option value="Others">Others</option>
+                </select>
+                <select id="filter-condition" class="filter-select-modern">
+                    <option value="" data-i18n="marketplace.condition">Condition</option>
+                    <option value="New">New</option>
+                    <option value="Used">Used</option>
+                </select>
+                <select id="filter-location" class="filter-select-modern">
+                    <option value="" data-i18n="marketplace.location">Location</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Karnataka">Karnataka</option>
+                </select>
+                <select id="filter-sort" class="filter-select-modern">
+                    <option value="" data-i18n="marketplace.sortBy">Sort By</option>
+                    <option value="price_low">Price: Low to High</option>
+                    <option value="price_high">Price: High to Low</option>
+                    <option value="newest">Newest First</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Category Chips -->
+        <nav class="category-chips-scroll">
+            <button class="cat-chip active chip" data-category="All">All</button>
+            <button class="cat-chip chip" data-category="Tractors">Tractors</button>
+            <button class="cat-chip chip" data-category="Implements">Implements</button>
+            <button class="cat-chip chip" data-category="Irrigation">Irrigation</button>
+            <button class="cat-chip chip" data-category="Harvesting">Harvesting</button>
+            <button class="cat-chip chip" data-category="Planting">Planting</button>
+            <button class="cat-chip chip" data-category="Others">Others</button>
+        </nav>
+
+        <!-- Featured Listings Grid -->
+        <div class="section-title-row">
+            <h3 data-i18n="marketplace.featuredListings">Featured Listings</h3>
+            <a href="#" class="view-all-link" data-i18n="marketplace.viewAll">View all &rarr;</a>
+        </div>
+        <div class="listings-grid products-grid">
+            <!-- Dynamic listing cards will be injected here -->
+            <div class="loading-state" style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                <i class="fas fa-circle-notch fa-spin" style="font-size: 24px; color: var(--primary-green);"></i>
+                <p style="margin-top: 10px; color: var(--text-muted);">Loading equipment...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Listings Row -->
+    <div class="recent-row-card">
+        <div class="section-title-row">
+            <h3 data-i18n="marketplace.recentListings">Recent Listings</h3>
+            <a href="#" class="view-all-link" data-i18n="marketplace.viewAll">View all &rarr;</a>
+        </div>
+        <div class="recent-scroll-flex" id="recent-listings-container">
+            <!-- Dynamic recent listing items will be injected here -->
+        </div>
+    </div>
+</div>
+
+<!-- Add Product Modal (Preserved Functionality, Refined UI) -->
+<div id="add-product-modal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 2000; justify-content: center; align-items: center; padding: 20px;">
+    <div class="modal-content-refined" style="background: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-primary); border-radius: var(--radius-xl); width: 100%; max-width: 550px; position: relative; max-height: 90vh; overflow-y: auto; box-shadow: var(--shadow-xl); padding: 28px;">
+        <button id="close-modal-btn" style="position: absolute; top: 20px; right: 20px; background: var(--bg-surface-soft); border: 1px solid var(--border-color); width: 36px; height: 36px; border-radius: 50%; font-size: 20px; cursor: pointer; color: var(--text-muted); display: flex; align-items: center; justify-content: center;">&times;</button>
+        
+        <div style="margin-bottom: 24px;">
+            <h2 style="margin: 0; font-size: 22px; font-weight: 800; color: var(--text-primary);">List New Equipment</h2>
+            <p style="margin: 5px 0 0 0; color: var(--text-muted); font-size: 14px;">Share your equipment with the community.</p>
+        </div>
+
+        <form id="add-product-form" style="display: flex; flex-direction: column; gap: 18px;">
+            <div>
+                <label style="display:block; margin-bottom:8px; font-size: 13px; font-weight: 700; color: var(--text-primary);">Product Name</label>
+                <input type="text" id="prod-name" required placeholder="e.g. Mahindra 575 DI Tractor" style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 14px; outline: none; background: var(--input-bg); color: var(--text-primary);">
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size: 13px; font-weight: 700; color: var(--text-primary);">Category</label>
+                    <select id="prod-category" style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 14px; outline: none; background: var(--input-bg); color: var(--text-primary);">
+                        <option>Tractors</option>
+                        <option>Implements</option>
+                        <option>Irrigation</option>
+                        <option>Harvesting</option>
+                        <option>Planting</option>
+                        <option>Others</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size: 13px; font-weight: 700; color: var(--text-primary);">Condition</label>
+                    <select id="prod-condition" style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 14px; outline: none; background: var(--input-bg); color: var(--text-primary);">
+                        <option>New</option>
+                        <option>Used - Like New</option>
+                        <option>Used - Good</option>
+                        <option>Used - Fair</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size: 13px; font-weight: 700; color: var(--text-primary);">Price (₹)</label>
+                    <input type="number" id="prod-price" required placeholder="0.00" style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 14px; outline: none; background: var(--input-bg); color: var(--text-primary);">
+                </div>
+                <div>
+                    <label style="display:block; margin-bottom:8px; font-size: 13px; font-weight: 700; color: var(--text-primary);">Location</label>
+                    <input type="text" id="prod-location" required placeholder="e.g. Pune, Maharashtra" style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 14px; outline: none; background: var(--input-bg); color: var(--text-primary);">
+                </div>
+            </div>
+
+            <div>
+                <label style="display:block; margin-bottom:8px; font-size: 13px; font-weight: 700; color: var(--text-primary);">Description</label>
+                <textarea id="prod-desc" rows="3" placeholder="Tell buyers more about your equipment..." style="width: 100%; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); font-size: 14px; outline: none; background: var(--input-bg); color: var(--text-primary); resize: vertical;"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="padding: 14px; font-size: 15px; font-weight: 700; margin-top: 8px; width: 100%;">List Product Now</button>
+        </form>
+    </div>
+</div>
+
+<!-- Right Sidebar Content Template (will be moved via JS) -->
+<div id="marketplace-right-sidebar-content" style="display: none;">
+    <div class="marketplace-info-card">
+        <div class="info-card-header">
+            <h4>My Listings</h4>
+            <a href="#" class="view-all-link">View all</a>
+        </div>
+        <div class="my-listings-stats-grid">
+            <div class="m-stat-box">
+                <span>Active Listings</span>
+                <strong>4</strong>
+            </div>
+            <div class="m-stat-box">
+                <span>Sold Items</span>
+                <strong>12</strong>
+            </div>
+        </div>
+        <button class="manage-listings-btn">Manage Listings</button>
+    </div>
+
+    <div class="marketplace-info-card">
+        <div class="info-card-header">
+            <h4>Popular Searches</h4>
+        </div>
+        <div class="popular-tags-flex">
+            <span class="search-tag-chip">Tractor</span>
+            <span class="search-tag-chip">Rotavator</span>
+            <span class="search-tag-chip">Plough</span>
+            <span class="search-tag-chip">Trailer</span>
+            <span class="search-tag-chip">Seed Drill</span>
+            <span class="search-tag-chip">Sprayer</span>
+        </div>
+    </div>
+
+    <div class="marketplace-info-card">
+        <div class="info-card-header">
+            <h4>Safe Marketplace</h4>
+        </div>
+        <div class="safe-marketplace-list">
+            <div class="safe-list-item"><i class="fas fa-user-shield"></i> Verified Users</div>
+            <div class="safe-list-item"><i class="fas fa-lock"></i> Secure Payments</div>
+            <div class="safe-list-item"><i class="fas fa-award"></i> Quality Assurance</div>
+        </div>
+    </div>
+
+    <div class="marketplace-info-card">
+        <div class="info-card-header">
+            <h4>Tips for Buyers</h4>
+        </div>
+        <ul class="tips-list-refined">
+            <li class="tip-list-item">Check equipment condition carefully</li>
+            <li class="tip-list-item">Verify documents before buying</li>
+            <li class="tip-list-item">Meet seller in a safe location</li>
+        </ul>
+        <a href="#" class="view-all-link" style="display: block; margin-top: 15px;">Read more tips &rarr;</a>
+    </div>
+</div>
+

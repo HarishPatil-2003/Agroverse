@@ -1,0 +1,111 @@
+<section class="filter-bar" style="display: flex; gap: 15px; margin-bottom: 25px; flex-wrap: wrap;">
+    <div class="search-wrapper" style="flex: 1; min-width: 200px; position: relative;">
+        <i class="fas fa-search" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--text-soft);"></i>
+        <input type="text" id="scheme-search" placeholder="Search schemes (e.g., irrigation, subsidy...)" style="width: 100%; padding: 12px 15px 12px 40px; border-radius: 10px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); outline: none;">
+    </div>
+    <div class="dropdowns-wrapper" style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <select id="filter-crop" style="padding: 12px; border-radius: 10px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); outline: none;">
+            <option value="">All Crop Types</option>
+            <option value="Rice">Rice</option>
+            <option value="Wheat">Wheat</option>
+            <option value="Pulses">Pulses</option>
+            <option value="Cotton">Cotton</option>
+            <option value="Sugarcane">Sugarcane</option>
+            <option value="Fruits">Fruits</option>
+            <option value="Vegetables">Vegetables</option>
+            <option value="Organic Crops">Organic Crops</option>
+        </select>
+        <select id="filter-state" style="padding: 12px; border-radius: 10px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); outline: none;">
+            <option value="">All States</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="West Bengal">West Bengal</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+        </select>
+        <select id="filter-category" style="padding: 12px; border-radius: 10px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); outline: none;">
+            <option value="">All Categories</option>
+            <option value="Income Support">Income Support</option>
+            <option value="Crop Insurance">Crop Insurance</option>
+            <option value="Credit & Finance">Credit & Finance</option>
+            <option value="Infrastructure">Infrastructure</option>
+            <option value="Mechanization">Mechanization</option>
+            <option value="Irrigation">Irrigation</option>
+        </select>
+    </div>
+</section>
+
+<section class="scheme-list" id="schemes-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+    <!-- Loading skeleton -->
+    <div style="text-align: center; grid-column: 1 / -1; padding: 40px; color: var(--text-muted);">
+        <i class="fas fa-spinner fa-spin fa-2x"></i>
+        <p style="margin-top: 10px;">Loading Government Schemes...</p>
+    </div>
+</section>
+
+<!-- Scheme Details Modal -->
+<div id="scheme-modal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center; padding: 20px;">
+    <div class="modal-content" style="background: var(--bg-card); width: 100%; max-width: 600px; max-height: 90vh; border-radius: 16px; overflow-y: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.2); animation: slideUp 0.3s ease;">
+        <div style="position: relative;">
+            <img id="modal-img" src="" alt="Scheme" style="width: 100%; height: 200px; object-fit: cover; border-top-left-radius: 16px; border-top-right-radius: 16px;">
+            <button id="close-modal" style="position: absolute; top: 15px; right: 15px; background: rgba(0,0,0,0.5); color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer;"><i class="fas fa-times"></i></button>
+        </div>
+        <div style="padding: 25px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                <h2 id="modal-title" style="font-size: 22px; font-weight: 800; color: var(--text-main);"></h2>
+                <span id="modal-badge" style="background: var(--color-green-soft); color: var(--primary-color); padding: 5px 10px; border-radius: 8px; font-size: 12px; font-weight: 700; white-space: nowrap; margin-left: 10px;"></span>
+            </div>
+            
+            <p id="modal-desc" style="color: var(--text-muted); font-size: 14.5px; line-height: 1.6; margin-bottom: 20px;"></p>
+            
+            <div style="background: var(--bg-main); padding: 15px; border-radius: 10px; margin-bottom: 20px;">
+                <h4 style="font-size: 14px; margin-bottom: 8px; color: var(--text-main);"><i class="fas fa-gift" style="color: var(--primary-color); margin-right: 8px;"></i>Benefits</h4>
+                <p id="modal-benefits" style="font-size: 13.5px; color: var(--text-muted); line-height: 1.5;"></p>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <h4 style="font-size: 14px; margin-bottom: 8px; color: var(--text-main);"><i class="fas fa-check-circle" style="color: var(--primary-color); margin-right: 8px;"></i>Eligibility</h4>
+                <p id="modal-eligibility" style="font-size: 13.5px; color: var(--text-muted); line-height: 1.5;"></p>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <h4 style="font-size: 14px; margin-bottom: 8px; color: var(--text-main);"><i class="fas fa-file-alt" style="color: var(--primary-color); margin-right: 8px;"></i>Required Documents</h4>
+                <ul id="modal-docs" style="font-size: 13.5px; color: var(--text-muted); line-height: 1.5; padding-left: 25px;"></ul>
+            </div>
+
+            <button id="modal-apply-btn" class="auth-btn" style="width: 100%; margin: 0;">Apply Now <i class="fas fa-external-link-alt" style="margin-left: 8px; font-size: 12px;"></i></button>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .scheme-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: transform 0.2s, box-shadow 0.2s;
+        display: flex;
+        flex-direction: column;
+    }
+    .scheme-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    }
+    .scheme-img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+    }
+    .scheme-content {
+        padding: 20px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+</style>

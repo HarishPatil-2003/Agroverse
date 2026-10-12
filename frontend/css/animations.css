@@ -1,0 +1,77 @@
+/**
+ * AgroVerse Motion Utilities & Micro-Animations (Phase 3)
+ * Sophisticated, high-performance interactions respecting accessibility settings.
+ */
+
+@keyframes page-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-root > * {
+  animation: page-enter 0.22s var(--ease-spring);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spin,
+.fa-spin {
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.75; transform: scale(0.99); }
+}
+
+.pulsing {
+  animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+.status-dot.active {
+  animation: pulse-dot 1.8s infinite;
+}
+
+/* ── Staggered item entrance for feeds & product grids ── */
+.stagger-item:nth-child(1) { animation: page-enter 0.2s 0.03s backwards var(--ease-spring); }
+.stagger-item:nth-child(2) { animation: page-enter 0.2s 0.06s backwards var(--ease-spring); }
+.stagger-item:nth-child(3) { animation: page-enter 0.2s 0.09s backwards var(--ease-spring); }
+.stagger-item:nth-child(4) { animation: page-enter 0.2s 0.12s backwards var(--ease-spring); }
+.stagger-item:nth-child(5) { animation: page-enter 0.2s 0.15s backwards var(--ease-spring); }
+.stagger-item:nth-child(6) { animation: page-enter 0.2s 0.18s backwards var(--ease-spring); }
+
+/* Shake effect for form validation errors */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+.shake-error {
+  animation: shake 0.35s ease-in-out;
+}
+
+/* ── Accessibility: Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

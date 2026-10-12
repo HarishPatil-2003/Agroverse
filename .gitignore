@@ -1,0 +1,42 @@
+# Environment Variables & Secrets
+.env
+*/.env
+*/*/.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Java & Maven Artifacts
+backend/target/
+backend/build/
+backend/bin/
+*.class
+*.jar
+*.war
+
+# Python Virtual Environments & Bytecode
+ai-service/venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE & OS Artifacts
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Logs & Runtime Dumps
+*.log
+logs/
+backend/startup_log.txt
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Node (if any)
+node_modules/
+dist/

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroVerse - Community</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="community.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-section">
+                <div class="logo-wrapper">
+                    <img src="assets/favicon.png" alt="AgroVerse Logo">
+                    <h1>AgroVerse</h1>
+                </div>
+                <p>Smart Farming, Better Future</p>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-item" data-route="index.html">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </div>
+                <div class="nav-item" data-route="dashboard.html">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item" data-route="crop.html">
+                    <i class="fas fa-leaf"></i>
+                    <span>Crop Detection</span>
+                </div>
+                <div class="nav-item" data-route="schemes.html">
+                    <i class="fas fa-file-invoice"></i>
+                    <span>Govt Schemes</span>
+                </div>
+                <div class="nav-item" data-route="community.html">
+                    <i class="fas fa-users"></i>
+                    <span>Community</span>
+                </div>
+                <div class="nav-item" data-route="marketplace.html">
+                    <i class="fas fa-tractor"></i>
+                    <span>Marketplace</span>
+                </div>
+                <div class="nav-item" data-route="profile.html">
+                    <i class="fas fa-user-circle"></i>
+                    <span>Profile</span>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer-card">
+                <img src="assets/farmer.png" alt="Farmer Illustration">
+                <h4>Hello, Farmer!</h4>
+                <p>Let's grow together and build a better tomorrow.</p>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Header Section -->
+            <header class="page-header">
+                <div class="header-left">
+                    <h2>Community</h2>
+                    <p>Connect, share and learn with fellow farmers</p>
+                </div>
+                <div class="header-right-actions">
+                    <button class="create-post-btn"><i class="fas fa-plus"></i> Create Post</button>
+                    <div class="header-icons">
+                        <button class="circle-icon-btn"><i class="fas fa-phone-alt"></i></button>
+                        <button class="circle-icon-btn"><i class="fas fa-video"></i></button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Category Tabs -->
+            <nav class="category-tabs">
+                <a href="#" class="tab-item active">All Posts</a>
+                <a href="#" class="tab-item">Questions</a>
+                <a href="#" class="tab-item">Videos</a>
+                <a href="#" class="tab-item">Images</a>
+                <a href="#" class="tab-item">Reviews</a>
+            </nav>
+
+            <!-- Post Creation Box -->
+            <section class="post-creation-container">
+                <div class="post-box-card">
+                    <div class="post-box-top">
+                        <img src="https://ui-avatars.com/api/?name=Harish+Patil&background=2ecc71&color=fff" alt="User Avatar" class="user-avatar">
+                        <input type="text" placeholder="Share something with the community..." class="post-input">
+                    </div>
+                    <div class="post-box-footer">
+                        <div class="attachment-btns">
+                            <button class="attach-btn"><i class="far fa-image"></i> Image</button>
+                            <button class="attach-btn"><i class="fas fa-video"></i> Video</button>
+                            <button class="attach-btn"><i class="fas fa-poll-h"></i> Poll</button>
+                        </div>
+                        <button class="post-submit-btn">Post</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filter Row -->
+            <div class="filter-row">
+                <div class="dropdown-group">
+                    <div class="filter-dropdown">
+                        <span>Latest</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="filter-dropdown">
+                        <span>All Categories</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post Feed -->
+            <section class="post-feed">
+                
+                <!-- Post Card 1 -->
+                <div class="post-card">
+                    <div class="post-card-header">
+                        <img src="https://ui-avatars.com/api/?name=Rajesh+Kumar&background=3498db&color=fff" alt="User Avatar" class="post-avatar">
+                        <div class="post-user-info">
+                            <div class="name-badge-row">
+                                <span class="user-name">Rajesh Kumar</span>
+                                <span class="role-badge">Farmer</span>
+                            </div>
+                            <span class="post-time">2 hours ago • Nashik, Maharashtra</span>
+                        </div>
+                    </div>
+                    <div class="post-card-content">
+                        <p>Finally harvesting my first batch of organic tomatoes this season! The yield looks promising and the quality is exceptional. Thanks for the tips on organic fertilizer.</p>
+                        <div class="post-media-grid">
+                            <img src="assets/tomato.png" alt="Crop 1">
+                            <img src="assets/wheat.png" alt="Crop 2">
+                            <img src="assets/corn.png" alt="Crop 3">
+                        </div>
+                    </div>
+                    <div class="post-card-footer">
+                        <div class="post-stats">
+                            <span><i class="far fa-thumbs-up"></i> 124</span>
+                            <span><i class="far fa-comment"></i> 48</span>
+                            <span><i class="far fa-share-square"></i> 12</span>
+                        </div>
+                        <a href="#" class="view-comments">View all 48 comments</a>
+                    </div>
+                </div>
+
+                <!-- Question Post Type -->
+                <div class="post-card question-card">
+                    <div class="post-card-header">
+                        <img src="https://ui-avatars.com/api/?name=Suresh+Patil&background=e67e22&color=fff" alt="User Avatar" class="post-avatar">
+                        <div class="post-user-info">
+                            <div class="name-badge-row">
+                                <span class="user-name">Suresh Patil</span>
+                                <span class="question-label">Question</span>
+                            </div>
+                            <span class="post-time">5 hours ago • Pune, Maharashtra</span>
+                        </div>
+                    </div>
+                    <div class="post-card-content">
+                        <p class="question-text">"Does anyone have experience with solar water pumps for small-scale irrigation? I'm considering installing one and want to know about the reliability during monsoon."</p>
+                    </div>
+                    <div class="post-card-footer">
+                        <div class="post-stats">
+                            <span><i class="far fa-comment"></i> 15 Answers</span>
+                        </div>
+                        <button class="answer-btn">Answer</button>
+                    </div>
+                </div>
+
+                <!-- Post Card 2 (Video) -->
+                <div class="post-card">
+                    <div class="post-card-header">
+                        <img src="https://ui-avatars.com/api/?name=Anjali+Devi&background=9b59b6&color=fff" alt="User Avatar" class="post-avatar">
+                        <div class="post-user-info">
+                            <div class="name-badge-row">
+                                <span class="user-name">Anjali Devi</span>
+                                <span class="role-badge">Expert</span>
+                            </div>
+                            <span class="post-time">1 day ago • Ahmedabad, Gujarat</span>
+                        </div>
+                    </div>
+                    <div class="post-card-content">
+                        <p>A quick tutorial on how to test soil pH at home using simple tools. Understanding your soil is the first step to a successful harvest.</p>
+                        <div class="video-preview">
+                            <img src="assets/tip.png" alt="Video Preview">
+                            <div class="play-overlay">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-card-footer">
+                        <div class="post-stats">
+                            <span><i class="far fa-thumbs-up"></i> 256</span>
+                            <span><i class="far fa-comment"></i> 89</span>
+                            <span><i class="far fa-share-square"></i> 42</span>
+                        </div>
+                        <a href="#" class="view-comments">View all 89 comments</a>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+
+        <!-- Right Panel -->
+        <aside class="right-panel">
+            
+            <!-- Online Farmers -->
+            <div class="panel-card-info">
+                <h3 class="panel-title">Online Farmers</h3>
+                <div class="panel-list">
+                    <div class="list-item-horizontal">
+                        <div class="item-left">
+                            <div class="avatar-status-wrapper">
+                                <img src="https://ui-avatars.com/api/?name=Ramesh+Pawar&background=2ecc71&color=fff" alt="User">
+                                <span class="online-indicator"></span>
+                            </div>
+                            <div class="item-text">
+                                <h4>Ramesh Pawar</h4>
+                                <span>Solapur, MH</span>
+                            </div>
+                        </div>
+                        <button class="icon-action-btn"><i class="fas fa-phone-alt"></i></button>
+                    </div>
+                    <div class="list-item-horizontal">
+                        <div class="item-left">
+                            <div class="avatar-status-wrapper">
+                                <img src="https://ui-avatars.com/api/?name=Priya+Singh&background=3498db&color=fff" alt="User">
+                                <span class="online-indicator"></span>
+                            </div>
+                            <div class="item-text">
+                                <h4>Priya Singh</h4>
+                                <span>Patna, BR</span>
+                            </div>
+                        </div>
+                        <button class="icon-action-btn"><i class="fas fa-phone-alt"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trending Topics -->
+            <div class="panel-card-info">
+                <h3 class="panel-title">Trending Topics</h3>
+                <div class="panel-list">
+                    <div class="topic-item">
+                        <span class="topic-name">#OrganicFarming</span>
+                        <span class="post-count">2.4k posts</span>
+                    </div>
+                    <div class="topic-item">
+                        <span class="topic-name">#TomatoBlight</span>
+                        <span class="post-count">1.8k posts</span>
+                    </div>
+                    <div class="topic-item">
+                        <span class="topic-name">#GovtSubsidies</span>
+                        <span class="post-count">1.2k posts</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Contributors -->
+            <div class="panel-card-info">
+                <h3 class="panel-title">Top Contributors</h3>
+                <div class="panel-list">
+                    <div class="contributor-item">
+                        <div class="item-left">
+                            <img src="https://ui-avatars.com/api/?name=Vikram+Rao&background=f1c40f&color=fff" alt="User">
+                            <div class="item-text">
+                                <h4>Vikram Rao</h4>
+                                <span>1,240 Points</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-trophy medal-gold"></i>
+                    </div>
+                    <div class="contributor-item">
+                        <div class="item-left">
+                            <img src="https://ui-avatars.com/api/?name=Sunita+Patel&background=bdc3c7&color=fff" alt="User">
+                            <div class="item-text">
+                                <h4>Sunita Patel</h4>
+                                <span>980 Points</span>
+                            </div>
+                        </div>
+                        <i class="fas fa-trophy medal-silver"></i>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <script src="navigation.js"></script>
+    <script type="module" src="js/community.js"></script>
+    <script type="module" src="js/chatbot.js"></script>`n</body>
+</html>
+

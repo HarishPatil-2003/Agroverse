@@ -1,0 +1,229 @@
+<section class="profile-card-container">
+    <div class="profile-main-card">
+        <div class="profile-left">
+            <div class="avatar-wrapper">
+                <img id="profile-avatar" src="https://ui-avatars.com/api/?name=User&background=2ecc71&color=fff&size=128" alt="Profile Picture">
+                <button class="edit-avatar-btn" id="open-photo-options"><i class="fas fa-camera"></i></button>
+                <input type="file" id="profile-file-input" style="display: none;" accept="image/*">
+            </div>
+            <div class="profile-basic-info">
+                <h3 id="display-name-main">Loading...</h3>
+                <span class="verified-badge"><i class="fas fa-check-circle"></i> <span data-i18n="profile.verifiedFarmer">Verified Farmer</span></span>
+                <div class="info-list">
+                    <div class="info-item"><i class="fas fa-id-card"></i> ID: <span id="display-farmer-id">AGV-2026-XXXX</span></div>
+                    <div class="info-item"><i class="fas fa-map-marker-alt"></i> <span id="display-location-main">Nashik, Maharashtra</span></div>
+                    <div class="info-item"><i class="fas fa-phone-alt"></i> <span id="display-phone-main">+91 00000 00000</span></div>
+                    <div class="info-item"><i class="fas fa-envelope"></i> <span id="display-email-main">user@agroverse.com</span></div>
+                    <div class="info-item"><i class="far fa-calendar-alt"></i> <span data-i18n="profile.memberSince">Member since</span> <span id="display-joined-date">April 2024</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="profile-right">
+            <div class="section-header">
+                <h4 data-i18n="profile.personalInfo">Personal Information</h4>
+                <button class="text-edit-btn" id="edit-profile-btn" data-i18n="profile.editProfile">Edit</button>
+            </div>
+            <div id="profile-completion-prompt" style="display: none; background: #fff8e1; border-left: 4px solid #ffc107; padding: 10px 15px; margin-bottom: 20px; border-radius: 8px; font-size: 13px; color: #856404;">
+                <i class="fas fa-lightbulb" style="margin-right: 8px;"></i>
+                Complete your profile to get better recommendations.
+            </div>
+            <div class="info-grid">
+                <div class="grid-field">
+                    <label data-i18n="profile.fullName">Full Name</label>
+                    <span id="display-full-name">Loading...</span>
+                </div>
+                <div class="grid-field">
+                    <label data-i18n="profile.dob">Date of Birth</label>
+                    <span id="display-dob">Not added yet</span>
+                </div>
+                <div class="grid-field">
+                    <label data-i18n="profile.gender">Gender</label>
+                    <span id="display-gender">Not added yet</span>
+                </div>
+                <div class="grid-field">
+                    <label data-i18n="profile.farmType">Farm Type</label>
+                    <span id="display-farm-type">Not added yet</span>
+                </div>
+                <div class="grid-field">
+                    <label data-i18n="profile.landHolding">Land Holding</label>
+                    <span id="display-land-holding">Not added yet</span>
+                </div>
+                <div class="grid-field">
+                    <label data-i18n="profile.experience">Experience</label>
+                    <span id="display-experience">Not added yet</span>
+                </div>
+                <div class="grid-field full-width">
+                    <label data-i18n="profile.address">Address</label>
+                    <span id="display-address">Not added yet</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Photo Options Modal -->
+<div id="photo-options-modal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 2000; justify-content: center; align-items: center;">
+    <div class="modal-content" style="background: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-primary); padding: 25px; border-radius: var(--radius-xl); width: 320px; text-align: center; box-shadow: var(--shadow-xl);">
+        <h4 style="margin-bottom: 20px; font-weight: 800; font-size: 18px;">Profile Photo</h4>
+        <button id="btn-upload-file" class="btn btn-secondary w-full" style="margin-bottom: 10px;"><i class="fas fa-upload" style="margin-right: 10px;"></i>Upload Photo</button>
+        <button id="btn-take-photo" class="btn btn-secondary w-full" style="margin-bottom: 10px;"><i class="fas fa-camera" style="margin-right: 10px;"></i>Take Photo</button>
+        <button id="close-photo-modal" class="btn btn-ghost w-full" style="color: var(--color-danger); margin-top: 6px;">Cancel</button>
+    </div>
+</div>
+
+<!-- Camera Modal -->
+<div id="camera-modal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); z-index: 2100; justify-content: center; align-items: center;">
+    <div class="modal-content" style="background: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-primary); padding: 24px; border-radius: var(--radius-xl); width: 90%; max-width: 500px; text-align: center; box-shadow: var(--shadow-xl);">
+        <h4 style="margin-bottom: 15px; font-weight: 800; font-size: 18px;">Capture Photo</h4>
+        <div id="camera-container" style="width: 100%; aspect-ratio: 4/3; background: #000; border-radius: var(--radius-md); overflow: hidden; position: relative;">
+            <video id="camera-video" autoplay playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+            <canvas id="camera-canvas" style="display: none; width: 100%; height: 100%; object-fit: cover;"></canvas>
+        </div>
+        <div class="camera-actions" style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+            <button id="btn-capture" class="btn btn-primary" style="padding: 10px 20px;"><i class="fas fa-circle" style="margin-right: 8px;"></i>Capture</button>
+            <button id="btn-retake" class="btn btn-secondary" style="padding: 10px 20px; display: none;"><i class="fas fa-redo" style="margin-right: 8px;"></i>Retake</button>
+            <button id="btn-save-photo" class="btn btn-primary" style="padding: 10px 20px; display: none;"><i class="fas fa-check" style="margin-right: 8px;"></i>Save</button>
+            <button id="close-camera" class="btn btn-ghost" style="color: var(--color-danger); padding: 10px 20px;">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Profile Modal -->
+<div id="edit-profile-modal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 1000; justify-content: center; align-items: center; padding: 20px;">
+    <div class="modal-content" style="background: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-primary); width: 100%; max-width: 600px; border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-xl); animation: slideUp 0.3s ease;">
+        <div style="background: var(--brand-emerald-600); padding: 20px; color: white; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="margin: 0; font-size: 20px; font-weight: 800;">Edit Profile</h3>
+            <button id="close-edit-modal" style="background: transparent; border: none; color: white; font-size: 20px; cursor: pointer;"><i class="fas fa-times"></i></button>
+        </div>
+        <form id="edit-profile-form" style="padding: 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-height: 70vh; overflow-y: auto;">
+            <div class="form-group" style="grid-column: span 1;">
+                <label style="display: block; font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px;">First Name</label>
+                <input type="text" name="firstName" class="filter-select-modern" style="width: 100%;" required>
+            </div>
+            <div class="form-group" style="grid-column: span 1;">
+                <label style="display: block; font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px;">Last Name</label>
+                <input type="text" name="lastName" class="filter-select-modern" style="width: 100%;" required>
+            </div>
+            <div class="form-group" style="grid-column: span 1;">
+                <label style="display: block; font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px;">Phone Number</label>
+                <input type="text" name="phone" class="filter-select-modern" style="width: 100%;">
+            </div>
+            <div class="form-group" style="grid-column: span 1;">
+                <label style="display: block; font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px;">Date of Birth</label>
+                <input type="date" name="dateOfBirth" class="filter-select-modern" style="width: 100%;">
+            </div>
+            <div class="form-group" style="grid-column: span 1;">
+                <label style="display: block; font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px;">Gender</label>
+                <select name="gender" class="filter-select-modern" style="width: 100%;">
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group" style="grid-column: span 1;">
+                <label style="display: block; font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px;">Farm Type</label>
+                <select name="farmType" class="filter-select-modern" style="width: 100%;">
+                    <option value="">Select Type</option>
+                    <option value="Organic Farming">Organic Farming</option>
+                    <option value="Commercial Farming">Commercial Farming</option>
+                    <option value="Subsistence Farming">Subsistence Farming</option>
+                    <option value="Horticulture">Horticulture</option>
+                    <option value="Aquaculture">Aquaculture</option>
+                </select>
+            </div>
+            <div class="form-group" style="grid-column: span 1;">
+                <label style="display: block; font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px;">Land Holding</label>
+                <div style="display: flex; gap: 5px;">
+                    <input type="number" step="0.1" name="landHolding" class="filter-select-modern" style="flex: 1;">
+                    <select name="landUnit" class="filter-select-modern" style="width: 80px;">
+                        <option value="Acres">Acres</option>
+                        <option value="Hectares">Hectares</option>
+                        <option value="Gunta">Gunta</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group" style="grid-column: span 1;">
+                <label style="display: block; font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px;">Experience (Years)</label>
+                <input type="number" name="experienceYears" class="filter-select-modern" style="width: 100%;">
+            </div>
+            <div class="form-group" style="grid-column: span 2;">
+                <label style="display: block; font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px;">Full Address</label>
+                <textarea name="address" class="filter-select-modern" style="width: 100%; height: 60px; padding: 10px;"></textarea>
+            </div>
+            <div class="form-group" style="grid-column: span 1;">
+                <label style="display: block; font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px;">City / Village</label>
+                <input type="text" name="city" class="filter-select-modern" style="width: 100%;">
+            </div>
+            <div class="form-group" style="grid-column: span 1;">
+                <label style="display: block; font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 5px;">State</label>
+                <input type="text" name="state" class="filter-select-modern" style="width: 100%;">
+            </div>
+            <div style="grid-column: span 2; display: flex; gap: 10px; margin-top: 20px;">
+                <button type="submit" class="s-apply-btn" style="flex: 2; padding: 12px; font-size: 14px;">Save Profile Changes</button>
+                <button type="button" id="btn-cancel-edit" class="s-apply-btn" style="flex: 1; padding: 12px; font-size: 14px; background: #64748b;">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<section class="preferences-container">
+    <div class="pref-card">
+        <div class="pref-icon"><i class="fas fa-language"></i></div>
+        <div class="pref-content">
+            <label data-i18n="settings.language">Language</label>
+            <div class="select-wrapper">
+                <select id="languageSelect" class="pref-select">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                    <option value="mr">मराठी</option>
+                </select>
+                <i class="fas fa-chevron-down select-arrow"></i>
+            </div>
+        </div>
+    </div>
+    <div class="pref-card">
+        <div class="pref-icon"><i class="fas fa-adjust"></i></div>
+        <div class="pref-content">
+            <label data-i18n="settings.theme">Theme</label>
+            <div class="theme-toggle">
+                <button class="theme-option" data-theme-option="light" data-i18n="settings.light">Light</button>
+                <button class="theme-option" data-theme-option="dark" data-i18n="settings.dark">Dark</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="security-container">
+    <div class="security-card">
+        <h4 data-i18n="profile.accountSecurity">Account & Security</h4>
+        <div class="security-row">
+            <div class="row-left">
+                <i class="fas fa-lock"></i>
+                <span>Change Password</span>
+            </div>
+            <i class="fas fa-chevron-right arrow-icon"></i>
+        </div>
+        <div class="security-row">
+            <div class="row-left">
+                <i class="fas fa-shield-alt"></i>
+                <span>Two-Factor Authentication</span>
+            </div>
+            <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
+</section>
+
+<section class="about-container">
+    <div class="about-card">
+        <h4 data-i18n="profile.aboutAgroverse">About AgroVerse</h4>
+        <p data-i18n="profile.aboutDesc">AgroVerse is a modern digital platform dedicated to empowering farmers with cutting-edge technology, market access, and community support.</p>
+        <div class="about-meta">
+            <span>Version 2.4.0 (Stable)</span>
+            <span>support@agroverse.com</span>
+        </div>
+    </div>
+</section>
