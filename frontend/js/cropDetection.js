@@ -180,6 +180,17 @@ window.initCropDetectionPage = function () {
 
       const data = response;
 
+      try {
+        if (data && data.crop) {
+          localStorage.setItem('agroverse_last_diagnosis', JSON.stringify({
+            crop: data.crop,
+            disease: data.disease,
+            confidence: data.confidence,
+            timestamp: new Date().toISOString()
+          }));
+        }
+      } catch (_) {}
+
       if (resultSection) {
         resultSection.style.display = "block";
         resultSection.hidden = false;

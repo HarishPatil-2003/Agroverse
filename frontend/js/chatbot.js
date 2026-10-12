@@ -16,6 +16,7 @@ function initChatbot() {
                     <div class="header-text">
                         <h3 data-i18n="chatbot.title">Kisan Sahayak</h3>
                         <span class="status-indicator" data-i18n="chatbot.subtitle">Online for your help</span>
+                        <span id="chatbot-context-indicator" style="font-size: 10px; color: #16a34a; display: block; font-weight: 600;">🌾 Context-Aware</span>
                     </div>
                 </div>
                 <button id="close-chatbot" title="Close"><i class="fas fa-chevron-down"></i></button>
@@ -341,6 +342,39 @@ function initChatbot() {
 
     closeBtn.onclick = () => chatbot.style.display = 'none';
 
+    function getFarmerContext() {
+        const context = {};
+        try {
+            const activeCropStr = localStorage.getItem('agroverse_active_crop');
+            if (activeCropStr) {
+                const crop = JSON.parse(activeCropStr);
+                if (crop.name) context.cropName = crop.name;
+                if (crop.variety) context.variety = crop.variety;
+                if (crop.growthStage) context.growthStage = crop.growthStage;
+                if (crop.sowingDate) context.sowingDate = crop.sowingDate;
+            }
+
+            const cityEl = document.getElementById('weather-city-name');
+            const tempEl = document.getElementById('weather-temp');
+            const descEl = document.getElementById('weather-desc');
+            if (cityEl && cityEl.textContent && cityEl.textContent.trim()) {
+                context.location = cityEl.textContent.trim();
+                if (tempEl && descEl) {
+                    context.weather = `${tempEl.textContent.trim()}, ${descEl.textContent.trim()}`;
+                }
+            }
+
+            const lastDiagStr = localStorage.getItem('agroverse_last_diagnosis');
+            if (lastDiagStr) {
+                const diag = JSON.parse(lastDiagStr);
+                context.recentDiagnosis = `${diag.crop || 'Crop'} (${diag.disease || 'Health Scan'}, ${diag.confidence || 0}% confidence)`;
+            }
+        } catch (e) {
+            console.warn("[Chatbot] Could not extract farmer context:", e);
+        }
+        return Object.keys(context).length > 0 ? context : null;
+    }
+
     async function sendMessage(textOverride = null) {
         const text = textOverride || chatInput.value.trim();
         if (!text) return;
@@ -359,8 +393,9 @@ function initChatbot() {
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
         try {
-            // Using the centralized API module
-            const data = await api.chatbot(text);
+            // Using the centralized API module with authorized farmer context
+            const context = getFarmerContext();
+            const data = await api.chatbot(text, context);
             typingEl.remove();
             const reply = data.reply || "I'm sorry, I couldn't understand that.";
             appendMessage('bot', reply);

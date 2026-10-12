@@ -51,6 +51,10 @@ public class GroqService {
     }
 
     public Map<String, Object> generateReply(String userMessage, String language) {
+        return generateReply(userMessage, language, null);
+    }
+
+    public Map<String, Object> generateReply(String userMessage, String language, Map<String, Object> context) {
         Map<String, Object> response = new HashMap<>();
 
         // Validate input
@@ -77,10 +81,43 @@ public class GroqService {
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.setBearerAuth(apiKey.trim());
 
-            String systemPrompt = "You are Kisan Sahayak (AgroVerse AI), an agricultural expert for Indian farmers. " +
-                    "Provide practical, science-based advice on crops, soil health, fertilizers, weather adaptation, and pest management. " +
-                    "Always state clearly that your guidance is advisory and recommend leaf image upload or local KVK consultation for confirmed diagnoses. " +
-                    "Respond concisely and respectfully in " + (language != null ? language : "en") + ".";
+            StringBuilder promptBuilder = new StringBuilder();
+            promptBuilder.append("You are Kisan Sahayak (AgroVerse AI), an agricultural expert for Indian farmers. ")
+                    .append("Provide practical, science-based advice on crops, soil health, fertilizers, weather adaptation, and pest management. ")
+                    .append("Always state clearly that your guidance is advisory and recommend leaf image upload or local Krishi Vigyan Kendra (KVK) consultation for confirmed diagnoses. ")
+                    .append("Never automatically prescribe chemical treatments or fertilizer quantities without reliable crop-specific context. ");
+
+            if (context != null && !context.isEmpty()) {
+                promptBuilder.append("\n\n--- Authorized Farmer Field Context ---\n");
+                if (context.containsKey("cropName") && context.get("cropName") != null) {
+                    promptBuilder.append("- Selected Crop: ").append(context.get("cropName")).append("\n");
+                }
+                if (context.containsKey("variety") && context.get("variety") != null) {
+                    promptBuilder.append("- Variety: ").append(context.get("variety")).append("\n");
+                }
+                if (context.containsKey("growthStage") && context.get("growthStage") != null) {
+                    promptBuilder.append("- Growth Stage: ").append(context.get("growthStage")).append("\n");
+                }
+                if (context.containsKey("sowingDate") && context.get("sowingDate") != null) {
+                    promptBuilder.append("- Sowing Date: ").append(context.get("sowingDate")).append("\n");
+                }
+                if (context.containsKey("location") && context.get("location") != null) {
+                    promptBuilder.append("- Farmer Location: ").append(context.get("location")).append("\n");
+                }
+                if (context.containsKey("weather") && context.get("weather") != null) {
+                    promptBuilder.append("- Current Weather: ").append(context.get("weather")).append("\n");
+                }
+                if (context.containsKey("recentDiagnosis") && context.get("recentDiagnosis") != null) {
+                    promptBuilder.append("- Recent Leaf Diagnosis: ").append(context.get("recentDiagnosis")).append("\n");
+                }
+                if (context.containsKey("marketRate") && context.get("marketRate") != null) {
+                    promptBuilder.append("- Market Rate: ").append(context.get("marketRate")).append("\n");
+                }
+                promptBuilder.append("Tailor your recommendations specifically to this context where relevant.\n");
+            }
+
+            promptBuilder.append("Respond concisely and respectfully in ").append(language != null ? language : "en").append(".");
+            String systemPrompt = promptBuilder.toString();
 
             Map<String, Object> requestBody = new HashMap<>();
             requestBody.put("model", modelName);

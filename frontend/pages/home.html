@@ -1,3 +1,35 @@
+<!-- Personalized Farmer Dashboard & Workspace (Phase 7) -->
+
+<!-- Farmer Identity & Intelligence Banner -->
+<section class="farmer-workspace-banner" id="farmer-workspace-banner" style="background: linear-gradient(135deg, rgba(22, 163, 74, 0.12), rgba(16, 185, 129, 0.05)); border: 1px solid rgba(22, 163, 74, 0.25); border-radius: 16px; padding: 20px 24px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+    <div style="display: flex; align-items: center; gap: 16px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: var(--primary-green, #16a34a); color: white; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);">
+            <i class="fas fa-tractor"></i>
+        </div>
+        <div>
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <h3 id="workspace-farmer-name" style="margin: 0; font-size: 18px; font-weight: 800; color: var(--text-primary, #111827);">Namaste, Farmer!</h3>
+                <span id="workspace-farmer-id" class="badge" style="background: rgba(22, 163, 74, 0.15); color: var(--primary-green, #16a34a); font-weight: 700; font-size: 11px;">ID: #----</span>
+                <span id="workspace-lang-badge" class="badge" style="background: var(--bg-surface-soft, #f1f5f9); color: var(--text-muted, #475569); font-weight: 600; font-size: 11px;">Lang: English</span>
+            </div>
+            <p id="workspace-farmer-meta" style="margin: 4px 0 0; font-size: 13px; color: var(--text-muted, #6b7280);">
+                <i class="fas fa-map-marker-alt" style="color: #ef4444; margin-right: 4px;"></i> <span id="workspace-location">Nashik, Maharashtra</span> &bull; 
+                <i class="fas fa-seedling" style="color: #16a34a; margin-right: 4px; margin-left: 6px;"></i> <span id="workspace-land">5 Acres</span> &bull; 
+                <span id="workspace-advisory" style="color: var(--primary-green, #16a34a); font-weight: 600; margin-left: 6px;">Weather favorable for field monitoring</span>
+            </p>
+        </div>
+    </div>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <button id="open-add-crop-btn" class="btn btn-primary" style="display: flex; align-items: center; gap: 8px; padding: 10px 18px; font-size: 13px; font-weight: 700; border-radius: 8px; cursor: pointer;">
+            <i class="fas fa-plus"></i> <span>Log New Crop</span>
+        </button>
+        <button onclick="window.location.hash='#crop'" class="btn btn-secondary" style="display: flex; align-items: center; gap: 8px; padding: 10px 16px; font-size: 13px; font-weight: 600; border-radius: 8px; cursor: pointer;">
+            <i class="fas fa-camera"></i> <span>Scan Leaf</span>
+        </button>
+    </div>
+</section>
+
+<!-- Overview Statistics Row -->
 <section class="stats-row">
     <div class="stat-card">
         <div class="stat-icon icon-green">
@@ -41,32 +73,101 @@
     </div>
 </section>
 
+<!-- Primary Sections: Smart Crops & Tasks Grid -->
 <section class="sections-grid">
+    <!-- Smart Crop Lifecycle Card -->
     <div class="card-panel">
-        <div class="panel-header">
-            <h3 data-i18n="home.myCrops">My Crops</h3>
-            <a href="#crop" class="btn-link" data-i18n="common.viewAll">View All</a>
+        <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <h3 data-i18n="home.myCrops" style="margin: 0;">My Crops</h3>
+                <span class="badge" style="background: rgba(22, 163, 74, 0.1); color: var(--primary-green, #16a34a); font-size: 11px;">Lifecycle Tracker</span>
+            </div>
+            <div style="display: flex; gap: 8px; align-items: center;">
+                <button id="btn-filter-active-crops" class="btn btn-sm btn-link" style="font-weight: 700; color: var(--primary-green, #16a34a); cursor: pointer; border: none; background: none;">Active</button>
+                <span style="color: var(--text-muted);">&bull;</span>
+                <button id="btn-filter-archived-crops" class="btn btn-sm btn-link" style="color: var(--text-muted, #6b7280); cursor: pointer; border: none; background: none;">Archived</button>
+                <button id="btn-add-crop-panel" class="btn btn-sm btn-primary" style="margin-left: 8px; padding: 4px 10px; font-size: 12px; border-radius: 6px; cursor: pointer;">
+                    <i class="fas fa-plus"></i> Add
+                </button>
+            </div>
         </div>
-        <div class="crops-list" id="home-crops-list">
-            <div class="loading-container" style="height: 100px;">
-                <i class="fas fa-circle-notch fa-spin" style="font-size: 24px;"></i>
+        <div class="crops-list" id="home-crops-list" style="margin-top: 10px; display: flex; flex-direction: column; gap: 8px;">
+            <div class="loading-container" style="height: 100px; text-align: center; padding: 20px;">
+                <i class="fas fa-circle-notch fa-spin" style="font-size: 24px; color: var(--primary-green);"></i>
+                <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">Loading crops...</p>
             </div>
         </div>
     </div>
+
+    <!-- Today's Tasks & Farm Planner -->
     <div class="card-panel">
-        <div class="panel-header">
-            <h3 data-i18n="home.todaysTasks">Today's Tasks</h3>
-            <a href="#tasks" class="btn-link">Planner</a>
+        <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 data-i18n="home.todaysTasks" style="margin: 0;">Today's Tasks</h3>
+            <a href="#tasks" class="btn-link" style="font-size: 13px; font-weight: 600;">Open Planner &rarr;</a>
         </div>
-        <div class="tasks-list" id="home-tasks-list">
-            <div class="loading-container" style="height: 100px;">
-                <i class="fas fa-circle-notch fa-spin" style="font-size: 24px;"></i>
+        <div class="tasks-list" id="home-tasks-list" style="margin-top: 10px;">
+            <div class="loading-container" style="height: 100px; text-align: center; padding: 20px;">
+                <i class="fas fa-circle-notch fa-spin" style="font-size: 24px; color: var(--primary-green);"></i>
+                <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">Loading tasks...</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="lower-grid">
+<!-- Middle Intelligence Grid: Diagnostic History & Mandi Market Rates -->
+<section class="sections-grid" style="margin-top: 24px;">
+    <!-- Recent Crop Diagnostic History Card -->
+    <div class="card-panel" id="home-diagnosis-card">
+        <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-microscope" style="color: var(--primary-green, #16a34a);"></i>
+                <h3 style="margin: 0; font-size: 16px; font-weight: 700;">Crop Health & Scan History</h3>
+            </div>
+            <a href="#crop" class="btn-link" style="font-size: 12px;">New Scan &rarr;</a>
+        </div>
+        <div id="home-diagnosis-list" style="margin-top: 12px; display: flex; flex-direction: column; gap: 10px;">
+            <div style="text-align: center; padding: 24px; color: var(--text-muted); font-size: 12px;">
+                <i class="fas fa-circle-notch fa-spin"></i> Checking recent health scans...
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Agricultural Market Prices (Agmarknet) -->
+    <div class="card-panel" id="home-mandi-card">
+        <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-chart-line" style="color: #f59e0b;"></i>
+                <h3 style="margin: 0; font-size: 16px; font-weight: 700;">Live Mandi Market Rates</h3>
+            </div>
+            <span style="font-size: 11px; background: rgba(245, 158, 11, 0.12); color: #d97706; padding: 2px 8px; border-radius: 12px; font-weight: 700;">Agmarknet Live</span>
+        </div>
+        <div id="home-mandi-rates-list" style="margin-top: 12px; display: flex; flex-direction: column; gap: 8px;">
+            <div style="text-align: center; padding: 24px; color: var(--text-muted); font-size: 12px;">
+                <i class="fas fa-circle-notch fa-spin"></i> Fetching market rates...
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lower Grid: Community, Marketplace, & Schemes Advisory -->
+<section class="lower-grid" style="margin-top: 24px;">
+    <!-- Government Schemes Advisory Card -->
+    <div class="card-panel" id="home-schemes-card">
+        <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="margin: 0; font-size: 16px; font-weight: 700;"><i class="fas fa-landmark" style="color: var(--primary-green, #16a34a); margin-right: 6px;"></i> Recommended Schemes</h3>
+            <a href="#schemes" class="btn-link" style="font-size: 12px;">All Schemes &rarr;</a>
+        </div>
+        <div id="home-recommended-schemes" style="margin-top: 12px; display: flex; flex-direction: column; gap: 10px;">
+            <div style="text-align: center; padding: 20px; color: var(--text-muted); font-size: 12px;">
+                <i class="fas fa-circle-notch fa-spin"></i> Loading recommended schemes...
+            </div>
+        </div>
+        <p style="font-size: 11px; color: var(--text-muted, #6b7280); margin: 12px 0 0 0; font-style: italic;">
+            * Caveat: Scheme benefits and subsidies are subject to official verification of Aadhaar-linked landholding records.
+        </p>
+    </div>
+
+    <!-- Community Snapshot -->
     <div class="card-panel community-card" id="home-community-card">
         <div class="panel-header">
             <h3 data-i18n="home.communitySnapshot">Community Snapshot</h3>
@@ -75,12 +176,76 @@
             <i class="fas fa-circle-notch fa-spin" style="font-size: 24px;"></i>
         </div>
     </div>
-    <div class="card-panel" id="home-marketplace-card">
-        <div class="panel-header">
-            <h3 data-i18n="home.marketplaceSummary">Marketplace Summary</h3>
-        </div>
-        <div class="loading-container" style="height: 100px;">
-            <i class="fas fa-circle-notch fa-spin" style="font-size: 24px;"></i>
-        </div>
-    </div>
 </section>
+
+<!-- Smart Crop Lifecycle Modal (Add & Edit) -->
+<div id="crop-lifecycle-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 2000; justify-content: center; align-items: center; padding: 20px;">
+    <div style="background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #e5e7eb); color: var(--text-primary, #111827); border-radius: 16px; width: 100%; max-width: 560px; position: relative; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 40px rgba(0,0,0,0.2); padding: 28px;">
+        <button id="close-crop-modal-btn" style="position: absolute; top: 20px; right: 20px; background: var(--bg-surface-soft, #f1f5f9); border: 1px solid var(--border-color, #e5e7eb); width: 34px; height: 34px; border-radius: 50%; font-size: 18px; cursor: pointer; color: var(--text-muted, #6b7280); display: flex; align-items: center; justify-content: center;">&times;</button>
+        
+        <div style="margin-bottom: 20px;">
+            <h3 id="crop-modal-title" style="margin: 0; font-size: 20px; font-weight: 800; color: var(--text-primary, #111827);">Log New Crop</h3>
+            <p style="margin: 4px 0 0; font-size: 13px; color: var(--text-muted, #6b7280);">Track growth stage, sowing timeline, and field notes accurately.</p>
+        </div>
+
+        <form id="crop-lifecycle-form" style="display: flex; flex-direction: column; gap: 14px;">
+            <input type="hidden" id="crop-modal-id">
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div>
+                    <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 4px;">Crop Name *</label>
+                    <input type="text" id="crop-modal-name" required placeholder="e.g. Tomato, Wheat, Rice" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-color, #e5e7eb); border-radius: 8px; font-size: 13px; background: var(--input-bg, #f8fafc); color: var(--text-primary);">
+                </div>
+                <div>
+                    <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 4px;">Variety</label>
+                    <input type="text" id="crop-modal-variety" placeholder="e.g. Vaishali, Sharbati" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-color, #e5e7eb); border-radius: 8px; font-size: 13px; background: var(--input-bg, #f8fafc); color: var(--text-primary);">
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div>
+                    <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 4px;">Field / Plot Reference *</label>
+                    <input type="text" id="crop-modal-field" required placeholder="e.g. North Plot #2" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-color, #e5e7eb); border-radius: 8px; font-size: 13px; background: var(--input-bg, #f8fafc); color: var(--text-primary);">
+                </div>
+                <div>
+                    <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 4px;">Growth Stage</label>
+                    <select id="crop-modal-stage" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-color, #e5e7eb); border-radius: 8px; font-size: 13px; background: var(--input-bg, #f8fafc); color: var(--text-primary);">
+                        <option value="Seedling">Seedling (Germination)</option>
+                        <option value="Vegetative" selected>Vegetative Growth</option>
+                        <option value="Flowering">Flowering Stage</option>
+                        <option value="Fruiting">Fruiting / Grain Fill</option>
+                        <option value="Mature">Mature / Ripening</option>
+                        <option value="Harvest-Ready">Harvest-Ready</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div>
+                    <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 4px;">Sowing / Planting Date</label>
+                    <input type="date" id="crop-modal-sowing" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-color, #e5e7eb); border-radius: 8px; font-size: 13px; background: var(--input-bg, #f8fafc); color: var(--text-primary);">
+                </div>
+                <div>
+                    <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 4px;">Estimated Harvest Window</label>
+                    <input type="date" id="crop-modal-harvest" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-color, #e5e7eb); border-radius: 8px; font-size: 13px; background: var(--input-bg, #f8fafc); color: var(--text-primary);">
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div>
+                    <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 4px;">Irrigation Notes</label>
+                    <input type="text" id="crop-modal-irrigation" placeholder="e.g. Drip every 2 days, 45 min" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-color, #e5e7eb); border-radius: 8px; font-size: 13px; background: var(--input-bg, #f8fafc); color: var(--text-primary);">
+                </div>
+                <div>
+                    <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 4px;">Fertilizer & Treatment Notes</label>
+                    <input type="text" id="crop-modal-fertilizer" placeholder="e.g. Vermicompost + Neem oil" style="width: 100%; padding: 10px 12px; border: 1px solid var(--border-color, #e5e7eb); border-radius: 8px; font-size: 13px; background: var(--input-bg, #f8fafc); color: var(--text-primary);">
+                </div>
+            </div>
+
+            <div style="margin-top: 8px; display: flex; gap: 10px;">
+                <button type="submit" id="crop-modal-submit-btn" class="btn btn-primary" style="flex: 1; padding: 12px; font-weight: 700; border-radius: 8px; font-size: 14px; cursor: pointer;">Save Crop Record</button>
+                <button type="button" id="crop-modal-archive-btn" class="btn btn-secondary" style="display: none; padding: 12px 16px; font-weight: 600; border-radius: 8px; font-size: 13px; cursor: pointer;">Archive</button>
+            </div>
+        </form>
+    </div>
+</div>

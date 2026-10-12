@@ -9,5 +9,8 @@ import java.util.List;
 @Repository
 public interface CropItemRepository extends JpaRepository<CropItem, Long> {
     List<CropItem> findByUserIdOrderByCreatedAtDesc(Long userId);
+    List<CropItem> findByUserIdAndArchivedFalseOrderByCreatedAtDesc(Long userId);
+    List<CropItem> findByUserIdAndArchivedTrueOrderByCreatedAtDesc(Long userId);
     long countByUserId(Long userId);
+    long countByUserIdAndArchivedFalse(Long userId);
 }

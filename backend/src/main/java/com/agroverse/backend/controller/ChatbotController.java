@@ -21,7 +21,8 @@ public class ChatbotController {
     public ResponseEntity<Map<String, Object>> chat(@RequestBody ChatRequest request) {
         String msg = (request != null) ? request.getMessage() : null;
         String lang = (request != null) ? request.getLanguage() : "en";
-        Map<String, Object> reply = groqService.generateReply(msg, lang);
+        Map<String, Object> context = (request != null) ? request.getContext() : null;
+        Map<String, Object> reply = groqService.generateReply(msg, lang, context);
         return ResponseEntity.ok(reply);
     }
 

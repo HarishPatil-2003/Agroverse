@@ -106,12 +106,23 @@ export const api = {
     body: JSON.stringify(profileData)
   }),
 
-  // Home Dashboard
+  // Home Dashboard & Smart Crop Management
   getHomeSummary: () => apiFetch('/api/home/summary'),
-  getCrops: () => apiFetch('/api/crops'),
+  getCrops: (includeArchived = false) => apiFetch(`/api/crops${includeArchived ? '?includeArchived=true' : ''}`),
+  getCropDetails: (id) => apiFetch(`/api/crops/${id}`),
   addCrop: (crop) => apiFetch('/api/crops', {
     method: 'POST',
     body: JSON.stringify(crop)
+  }),
+  updateCrop: (id, crop) => apiFetch(`/api/crops/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(crop)
+  }),
+  archiveCrop: (id) => apiFetch(`/api/crops/${id}/archive`, {
+    method: 'POST'
+  }),
+  deleteCrop: (id) => apiFetch(`/api/crops/${id}`, {
+    method: 'DELETE'
   }),
   getTodayTasks: () => apiFetch('/api/tasks/today'),
   toggleTask: (taskId) => apiFetch(`/api/tasks/${taskId}/toggle`, {
@@ -167,11 +178,15 @@ export const api = {
   // Weather & Chatbot
   getWeather: (city = 'Nashik') => apiFetch(`/api/weather?city=${encodeURIComponent(city)}`),
   getWeatherByCoords: (lat, lon) => apiFetch(`/api/weather/coords?lat=${lat}&lon=${lon}`),
-  chatbot: (message) => {
+  chatbot: (message, context = null) => {
     const lang = localStorage.getItem('agroverse_language') || 'en';
+    const payload = { message, language: lang };
+    if (context && typeof context === 'object') {
+      payload.context = context;
+    }
     return apiFetch('/api/chat', {
       method: 'POST',
-      body: JSON.stringify({ message, language: lang })
+      body: JSON.stringify(payload)
     });
   }
 };
