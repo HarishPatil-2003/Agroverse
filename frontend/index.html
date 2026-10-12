@@ -116,9 +116,20 @@
                 </button>
 
                 <!-- Notifications -->
-                <div class="icon-btn" title="Notifications">
-                    <i class="far fa-bell"></i>
-                    <span class="badge">3</span>
+                <div style="position: relative;">
+                    <button class="icon-btn" id="headerNotificationBtn" title="Notifications" aria-label="Notifications" type="button" style="position: relative; cursor: pointer; background: none; border: none;">
+                        <i class="far fa-bell"></i>
+                        <span class="badge" id="headerNotificationBadge" style="display: none;">0</span>
+                    </button>
+                    <div id="notificationsDropdown" style="display: none; position: absolute; right: 0; top: 44px; width: 330px; background: var(--bg-surface, #ffffff); border: 1px solid var(--border-color, #e5e7eb); border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.12); z-index: 1200; padding: 14px; overflow: hidden; text-align: left;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--border-color, #e5e7eb); margin-bottom: 10px;">
+                            <span style="font-weight: 700; font-size: 14px; color: var(--text-primary, #111827);">Notifications</span>
+                            <span id="notif-count-text" style="font-size: 11px; color: var(--text-muted, #6b7280);">0 unread</span>
+                        </div>
+                        <div id="notificationsList" style="max-height: 280px; overflow-y: auto; font-size: 13px; display: flex; flex-direction: column; gap: 8px;">
+                            <div style="padding: 16px; text-align: center; color: var(--text-muted, #6b7280); font-size: 12px;">No new notifications</div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- User Meta / Profile Trigger -->
@@ -217,12 +228,14 @@
 <script type="module" src="js/community.js"></script>
 <script type="module" src="js/marketplace.js"></script>
 <script type="module" src="js/profile.js"></script>
+<script type="module" src="js/tasks.js"></script>
 <script type="module" src="js/router.js"></script>
 <script type="module" src="js/chatbot.js"></script>
 
 <script type="module">
     import { auth, getInitials } from './js/auth.js';
     import { initWeatherWidget } from './js/weather.js';
+    import { api } from './js/api.js';
 
     window.refreshUserIdentityUI = async function() {
         console.log("[UI] Refreshing user identity...");
@@ -344,6 +357,90 @@
         document.getElementById('header-profile-trigger')?.addEventListener('click', () => {
             window.location.hash = 'profile';
         });
+
+        // Notifications Dropdown Interaction & Badge Fetch
+        const notifBtn = document.getElementById('headerNotificationBtn');
+        const notifDropdown = document.getElementById('notificationsDropdown');
+        const notifBadge = document.getElementById('headerNotificationBadge');
+        const notifList = document.getElementById('notificationsList');
+        const notifCountText = document.getElementById('notif-count-text');
+
+        window.refreshHeaderNotifications = async function() {
+            try {
+                const notifications = await api.getNotifications();
+                const list = Array.isArray(notifications) ? notifications : [];
+                const unread = list.filter(n => !n.read);
+                if (notifBadge) {
+                    if (unread.length > 0) {
+                        notifBadge.textContent = unread.length > 9 ? '9+' : unread.length;
+                        notifBadge.style.display = 'inline-block';
+                    } else {
+                        notifBadge.style.display = 'none';
+                    }
+                }
+                if (notifCountText) {
+                    notifCountText.textContent = `${unread.length} unread`;
+                }
+                if (notifList) {
+                    if (list.length === 0) {
+                        notifList.innerHTML = '<div style="padding: 16px; text-align: center; color: var(--text-muted, #6b7280); font-size: 12px;">No new notifications</div>';
+                    } else {
+                        notifList.innerHTML = list.map(n => {
+                            const iconMap = {
+                                'ALERT': 'fa-exclamation-triangle',
+                                'WARNING': 'fa-exclamation-circle',
+                                'SUCCESS': 'fa-check-circle',
+                                'INFO': 'fa-info-circle'
+                            };
+                            const iconClass = iconMap[n.type] || 'fa-bell';
+                            return `
+                                <div class="notif-item" style="padding: 8px 10px; border-radius: 8px; background: ${n.read ? 'transparent' : 'rgba(22, 163, 74, 0.08)'}; border: 1px solid ${n.read ? 'var(--border-color, #e5e7eb)' : 'rgba(22, 163, 74, 0.25)'}; display: flex; gap: 10px; align-items: flex-start;">
+                                    <i class="fas ${iconClass}" style="margin-top: 3px; font-size: 14px; color: var(--brand-emerald-600, #16a34a);"></i>
+                                    <div style="flex: 1;">
+                                        <div style="font-weight: 600; font-size: 13px; color: var(--text-primary, #111827);">${n.title}</div>
+                                        <div style="font-size: 12px; color: var(--text-muted, #6b7280); margin-top: 2px;">${n.message}</div>
+                                    </div>
+                                    ${!n.read ? `<button class="mark-notif-btn" data-notif-id="${n.id}" title="Mark as read" style="background: none; border: none; color: var(--brand-emerald-600, #16a34a); cursor: pointer; padding: 2px;"><i class="fas fa-check"></i></button>` : ''}
+                                </div>
+                            `;
+                        }).join('');
+
+                        notifList.querySelectorAll('.mark-notif-btn').forEach(btn => {
+                            btn.addEventListener('click', async (e) => {
+                                e.stopPropagation();
+                                const nid = btn.dataset.notifId;
+                                if (nid) {
+                                    await api.markNotificationRead(nid).catch(err => console.warn(err));
+                                    window.refreshHeaderNotifications();
+                                }
+                            });
+                        });
+                    }
+                }
+            } catch (err) {
+                console.warn("[Notifications] Failed to refresh:", err);
+            }
+        };
+
+        notifBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (notifDropdown) {
+                const isHidden = notifDropdown.style.display === 'none';
+                notifDropdown.style.display = isHidden ? 'block' : 'none';
+                if (isHidden) {
+                    window.refreshHeaderNotifications();
+                }
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (notifDropdown && notifDropdown.style.display !== 'none' && !notifDropdown.contains(e.target) && !notifBtn?.contains(e.target)) {
+                notifDropdown.style.display = 'none';
+            }
+        });
+
+        // Initial notification badge check
+        window.refreshHeaderNotifications();
 
         await window.refreshUserIdentityUI();
     });

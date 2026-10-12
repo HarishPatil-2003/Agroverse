@@ -156,20 +156,30 @@
 <div id="marketplace-right-sidebar-content" style="display: none;">
     <div class="marketplace-info-card">
         <div class="info-card-header">
-            <h4>My Listings</h4>
-            <a href="#" class="view-all-link">View all</a>
+            <h4>Marketplace Statistics</h4>
         </div>
         <div class="my-listings-stats-grid">
             <div class="m-stat-box">
                 <span>Active Listings</span>
-                <strong>4</strong>
+                <strong id="marketplace-active-count">--</strong>
             </div>
             <div class="m-stat-box">
-                <span>Sold Items</span>
-                <strong>12</strong>
+                <span>Total Items</span>
+                <strong id="marketplace-total-count">--</strong>
             </div>
         </div>
-        <button class="manage-listings-btn">Manage Listings</button>
+    </div>
+
+    <div class="marketplace-info-card" id="market-rates-card">
+        <div class="info-card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <h4 style="margin: 0; font-size: 15px; font-weight: 700; color: var(--text-primary);"><i class="fas fa-chart-line" style="color: var(--primary-green, #16a34a); margin-right: 6px;"></i> Mandi Market Rates</h4>
+            <span style="font-size: 10px; font-weight: 700; background: rgba(22, 163, 74, 0.12); color: var(--primary-green, #16a34a); padding: 2px 8px; border-radius: 12px;">Live</span>
+        </div>
+        <div id="market-rates-list" style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="text-align: center; padding: 20px; color: var(--text-muted); font-size: 12px;">
+                <i class="fas fa-circle-notch fa-spin"></i> Loading market rates...
+            </div>
+        </div>
     </div>
 
     <div class="marketplace-info-card">

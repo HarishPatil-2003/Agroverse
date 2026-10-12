@@ -50,6 +50,16 @@ function renderSummary(data) {
     if (elActiveListings) elActiveListings.textContent = data.activeListings || 0;
     if (elNotifications) elNotifications.textContent = data.newNotifications || 0;
     if (elTasks) elTasks.textContent = data.tasksToday || 0;
+
+    const notifBadge = document.getElementById('headerNotificationBadge');
+    if (notifBadge && typeof data.newNotifications === 'number') {
+        if (data.newNotifications > 0) {
+            notifBadge.textContent = data.newNotifications > 9 ? '9+' : data.newNotifications;
+            notifBadge.style.display = 'inline-block';
+        } else {
+            notifBadge.style.display = 'none';
+        }
+    }
 }
 
 function renderCrops(crops) {
@@ -92,23 +102,31 @@ function renderTasks(tasks) {
     const container = document.getElementById('home-tasks-list');
     if (!container) return;
 
-    if (tasks.length === 0) {
+    if (!tasks || tasks.length === 0) {
         container.innerHTML = '<div class="empty-state">No tasks for today.</div>';
         return;
     }
 
-    container.innerHTML = tasks.map(task => `
-        <div class="task-item" onclick="window.location.hash='#tasks'" style="display: flex; align-items: flex-start; gap: 15px; padding: 12px 0; border-bottom: 1px solid var(--border-color); cursor:pointer;">
-            <div style="width: 35px; height: 35px; border-radius: 50%; background: ${task.bg}; color: ${task.color}; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">
-                <i class="fas ${task.icon}"></i>
+    container.innerHTML = tasks.map(task => {
+        const timeStr = task.dueTime || task.time || 'Scheduled';
+        const iconClass = (task.icon && task.icon.startsWith('fa-')) ? task.icon : (task.icon ? `fa-${task.icon}` : 'fa-check');
+        const color = task.color || '#16a34a';
+        const bg = task.bg || 'rgba(22, 163, 74, 0.1)';
+        const isDone = !!task.completed;
+
+        return `
+        <div class="task-item" onclick="window.location.hash='#tasks'" style="display: flex; align-items: flex-start; gap: 15px; padding: 12px 0; border-bottom: 1px solid var(--border-color); cursor:pointer; ${isDone ? 'opacity: 0.6;' : ''}">
+            <div style="width: 35px; height: 35px; border-radius: 50%; background: ${bg}; color: ${color}; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;">
+                <i class="fas ${iconClass}"></i>
             </div>
             <div style="flex: 1;">
-                <h4 style="font-size: 14px; font-weight: 700; margin: 0 0 4px 0;">${task.title}</h4>
-                <p style="font-size: 12px; color: var(--text-light); margin: 0;">${task.subtitle}</p>
+                <h4 style="font-size: 14px; font-weight: 700; margin: 0 0 4px 0; ${isDone ? 'text-decoration: line-through;' : ''}">${task.title}</h4>
+                <p style="font-size: 12px; color: var(--text-light); margin: 0;">${task.subtitle || task.type || 'Field Activity'}</p>
             </div>
-            <span style="font-size: 12px; font-weight: 700; color: ${task.color};">${task.time}</span>
+            <span style="font-size: 12px; font-weight: 700; color: ${color};">${timeStr}</span>
         </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 function renderCommunitySnapshot(data) {

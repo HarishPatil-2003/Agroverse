@@ -366,8 +366,9 @@ function initChatbot() {
             appendMessage('bot', reply);
         } catch (error) {
             typingEl.remove();
-            console.error("Chatbot connection error:", error);
-            const errorMsg = "Connection error. Backend API is not reachable.";
+            const errorMsg = (typeof i18next !== 'undefined' && i18next.t) 
+                ? i18next.t('chatbot.error') 
+                : "Connection error. Backend API is not reachable.";
             appendMessage('bot', errorMsg);
         } finally {
             sendBtn.disabled = false;

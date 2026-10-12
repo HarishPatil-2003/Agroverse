@@ -67,6 +67,13 @@ const AgroRouter = (() => {
       subtitle: "Manage your profile, language, and theme.",
       i18nSubtitle: "profile.subtitle",
       init: "initProfilePage"
+    },
+    tasks: {
+      file: "./pages/tasks.html",
+      title: "Today's Tasks",
+      i18nTitle: "home.todaysTasks",
+      subtitle: "Track and complete your scheduled farm activities.",
+      init: "initTasksPage"
     }
   };
 

@@ -217,8 +217,52 @@ export function initMarketplace() {
         });
     }
 
+    async function loadMarketRates() {
+        const listEl = document.getElementById('market-rates-list');
+        if (!listEl) return;
+        try {
+            const rates = await api.getMarketRates();
+            if (!rates || !Array.isArray(rates) || rates.length === 0) {
+                listEl.innerHTML = '<p style="font-size: 12px; color: var(--text-muted); text-align: center; padding: 10px;">No market rates available.</p>';
+                return;
+            }
+            listEl.innerHTML = rates.slice(0, 5).map(r => `
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 10px; background: var(--bg-surface-soft, #f8fafc); border: 1px solid var(--border-color, #e5e7eb); border-radius: 8px;">
+                    <div>
+                        <strong style="font-size: 13px; color: var(--text-primary); display: block;">${r.commodity}</strong>
+                        <span style="font-size: 11px; color: var(--text-muted);">${r.market}, ${r.state || ''}</span>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-size: 13px; font-weight: 700; color: var(--primary-green, #16a34a);">₹${r.modalPrice}/q</span>
+                        <span style="font-size: 10px; color: var(--text-muted); display: block;">₹${r.minPrice} - ₹${r.maxPrice}</span>
+                    </div>
+                </div>
+            `).join('');
+        } catch (err) {
+            console.warn("Failed to load market rates:", err);
+            listEl.innerHTML = '<p style="font-size: 12px; color: var(--text-muted); text-align: center; padding: 10px;">Market rates temporarily unavailable.</p>';
+        }
+    }
+
+    async function loadMarketplaceStats() {
+        try {
+            const summary = await api.getMarketplaceSummary();
+            const activeEl = document.getElementById('marketplace-active-count');
+            const totalEl = document.getElementById('marketplace-total-count');
+            if (summary) {
+                const total = summary.totalProducts || summary.activeListings || 0;
+                if (activeEl) activeEl.textContent = total;
+                if (totalEl) totalEl.textContent = total;
+            }
+        } catch (err) {
+            console.warn("Failed to load marketplace summary:", err);
+        }
+    }
+
     // Initial Load
     loadProducts();
+    loadMarketRates();
+    loadMarketplaceStats();
 }
 
 window.initMarketplacePage = initMarketplace;

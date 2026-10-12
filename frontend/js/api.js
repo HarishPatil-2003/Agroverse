@@ -160,6 +160,10 @@ export const api = {
   getNotifications: () => apiFetch('/api/notifications'),
   markNotificationRead: (id) => apiFetch(`/api/notifications/${id}/read`, { method: 'POST' }),
 
+  // Market Rates & Agricultural Data
+  getMarketRates: () => apiFetch('/api/market/rates'),
+  getMarketData: () => apiFetch('/api/data/market'),
+
   // Weather & Chatbot
   getWeather: (city = 'Nashik') => apiFetch(`/api/weather?city=${encodeURIComponent(city)}`),
   getWeatherByCoords: (lat, lon) => apiFetch(`/api/weather/coords?lat=${lat}&lon=${lon}`),
